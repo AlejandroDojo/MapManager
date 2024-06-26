@@ -7,6 +7,7 @@ import {BrowserRouter} from 'react-router-dom';
 
 import Header from '../Header/Header'
 import Register from '../Register/Register'
+import MapGallery from '../MapGallery/MapGallery'
 
 function App() {
   
@@ -28,7 +29,7 @@ function App() {
       _id: 2,
       name: "Camping",
       type: ["social", "naturaleza"],
-      description: "Fiesta Patronal",
+      description: "Disfrutar de la naturaleza",
       startDate: "2024/20/8",
       endDate: "2024/23/8",
       price: 0,
@@ -44,6 +45,7 @@ function App() {
       <h3>Pagina principal</h3>
       <BrowserRouter>
           <Routes>
+            <Route path='/' element={<MapGallery eventos={eventos}/>}/>
             <Route path='/eventform' element={<EventForm/>}/>
             <Route path='/register' element={<Register/>}/>
           </Routes>
