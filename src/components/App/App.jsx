@@ -4,7 +4,9 @@ import './App.css'
 import { Route } from 'react-router-dom'
 import { useState } from 'react'
 import {BrowserRouter} from 'react-router-dom';
+
 import Header from '../Header/Header'
+
 function App() {
   
   const [eventos, setEventos] = useState([
@@ -36,8 +38,7 @@ function App() {
     }
   ])
   return (
-    <div>
-      
+    <div>  
       <h3>Pagina principal</h3>
       <BrowserRouter>
           <Routes>
