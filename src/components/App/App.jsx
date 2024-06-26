@@ -6,6 +6,7 @@ import { useState } from 'react'
 import {BrowserRouter} from 'react-router-dom';
 
 import Header from '../Header/Header'
+import Register from '../Register/Register'
 
 function App() {
   
@@ -44,6 +45,7 @@ function App() {
       <BrowserRouter>
           <Routes>
             <Route path='/eventform' element={<EventForm/>}/>
+            <Route path='/register' element={<Register/>}/>
           </Routes>
       </BrowserRouter>
     </div>
