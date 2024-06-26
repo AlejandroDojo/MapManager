@@ -39,7 +39,6 @@ function App() {
     <div>
       
       <h3>Pagina principal</h3>
-      <Header />
       <BrowserRouter>
           <Routes>
             <Route path='/eventform' element={<EventForm/>}/>
