@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
@@ -14,16 +14,26 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
-
-
 const MapPicker = ({ onLocationSelect }) => {
   const [position, setPosition] = useState(null);
+  const [redirected, setRedirected] = useState(false);
 
   const LocationMarker = () => {
-    useMapEvents({
+    const map = useMapEvents({
       click(e) {
-        setPosition(e.latlng);
-        onLocationSelect(e.latlng);
+        if (!redirected) {
+          map.locate();
+        } else {
+          setPosition(e.latlng);
+          onLocationSelect(e.latlng);
+        }
+      },
+      locationfound(e) {
+        if (!redirected) {
+          setPosition(e.latlng);
+          map.flyTo(e.latlng, map.getZoom());
+          setRedirected(true);
+        }
       },
     });
 
@@ -34,7 +44,7 @@ const MapPicker = ({ onLocationSelect }) => {
     };
 
     return position === null ? null : (
-      <Marker 
+      <Marker
         position={position}
         draggable={true}
         eventHandlers={{
@@ -43,7 +53,6 @@ const MapPicker = ({ onLocationSelect }) => {
       />
     );
   };
-  
 
   return (
     <MapContainer center={[-27.298, -55.858]} zoom={13} style={{ height: '500px', width: '500px' }}>
