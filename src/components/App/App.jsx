@@ -38,7 +38,8 @@ function App() {
     }
   ])
   return (
-    <div>  
+    <div>
+      <Header/>
       <h3>Pagina principal</h3>
       <BrowserRouter>
           <Routes>
