@@ -1,1 +1,10 @@
-import { Link, Route, Routes} from 'react-router-dom';
+import React from 'react'
+
+const Header = () => {
+  return (
+    <div>Header</div>
+  )
+}
+
+
+export default Header

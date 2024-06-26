@@ -14,6 +14,8 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
+
+
 const MapPicker = ({ onLocationSelect }) => {
   const [position, setPosition] = useState(null);
 
@@ -25,10 +27,23 @@ const MapPicker = ({ onLocationSelect }) => {
       },
     });
 
+    const handleDragEnd = (e) => {
+      const newPosition = e.target.getLatLng();
+      setPosition(newPosition);
+      onLocationSelect(newPosition);
+    };
+
     return position === null ? null : (
-      <Marker position={position}></Marker>
+      <Marker 
+        position={position}
+        draggable={true}
+        eventHandlers={{
+          dragend: handleDragEnd,
+        }}
+      />
     );
   };
+  
 
   return (
     <MapContainer center={[-27.298, -55.858]} zoom={13} style={{ height: '500px', width: '500px' }}>

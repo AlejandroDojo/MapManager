@@ -1,7 +1,8 @@
-import { Routes } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import EventForm from '../EventForm/EventForm'
 import './App.css'
-import { Route } from 'react-router-dom'
+
+import Header from '../Header/Header'
 
 function App() {
   
