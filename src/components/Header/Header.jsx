@@ -3,8 +3,9 @@ import React from 'react'
 const Header = () => {
   return (
     <div>
-      
-      Ale tiene que hacer este header
+      Ale debe hacer ahora este header
+      <button>REGISTER</button>
+      <button>LOGIN</button>
     </div>
   )
 }
