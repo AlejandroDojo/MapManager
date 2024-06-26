@@ -7,45 +7,21 @@ import {BrowserRouter} from 'react-router-dom';
 
 import Header from '../Header/Header'
 import Register from '../Register/Register'
-import MapGallery from '../MapGallery/MapGallery'
+import Home from '../Home/Home'
+import { eventosPrueba } from '../../assets/eventosPrueba'
+
+
 
 function App() {
   
-  const [eventos, setEventos] = useState([
-    {
-      _id: 1,
-      name: "San Juan",
-      type: ["festival"],
-      description: "Fiesta Patronal",
-      startDate: "2024/20/8",
-      endDate: "2024/22/8",
-      price: 0,
-      location: {
-        lat: "-27.348860009198418",
-        lng: "-55.85442781406063"
-      }
-    },
-    {
-      _id: 2,
-      name: "Camping",
-      type: ["social", "naturaleza"],
-      description: "Disfrutar de la naturaleza",
-      startDate: "2024/20/8",
-      endDate: "2024/23/8",
-      price: 0,
-      location: {
-        lat: "-27.319538552180447",
-        lng: "-55.86065053913495"
-      }
-    }
-  ])
+  const [eventos, setEventos] = useState(eventosPrueba)
   return (
     <div>
       <Header/>
       <h3>Pagina principal</h3>
       <BrowserRouter>
           <Routes>
-            <Route path='/' element={<MapGallery eventos={eventos}/>}/>
+            <Route path='/' element={<Home eventos={eventos}/>}/>
             <Route path='/eventform' element={<EventForm/>}/>
             <Route path='/register' element={<Register/>}/>
           </Routes>
