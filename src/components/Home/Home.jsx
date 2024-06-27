@@ -2,6 +2,7 @@ import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import MapGallery from "./components/MapGallery/MapGallery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import styles from './Home.module.css'
 
 const Home = ({ eventos }) => {
 
@@ -16,6 +17,12 @@ const Home = ({ eventos }) => {
 
   return (
     <>
+      <ul className={styles.navContainer}>
+        <Link className={styles.link} to={'/'}>Home</Link>
+        <Link className={styles.link} to={'/nearbyevents'}>Eventos cercanos</Link>
+        <Link className={styles.link} to={'/myprofile'}>Mi perfil</Link>
+        <Link className={styles.link} to={'/eventform'}>Crear Evento</Link>
+      </ul>
       <div>Este es el componete de home</div>
       <div>
         <MapGallery eventos={eventos} />
@@ -25,8 +32,8 @@ const Home = ({ eventos }) => {
         <input type="checkbox"  onChange={handleMostrarInfo} />
         <label>Mostrar info</label>
         <MapContainer
-          center={[-27.298, -55.858]}
-          zoom={10}
+          center={[-27.338, -55.858]}
+          zoom={12}
           style={{ height: "500px", width: "calc(100% - 1rem)" }}
         >
           <TileLayer
@@ -44,7 +51,7 @@ const Home = ({ eventos }) => {
                   {evento.name} <br />
                   {evento.description} <br />
                   Empeza: 20:00 hs <hr/>
-                  <Link>Ir al evento</Link>
+                  <Link to={`/evento/${evento._id}`}>Ir al evento</Link>
                 </Popup>
                 <Tooltip direction="top" offset={[-15, -10]}   opacity={0.8}  permanent={mostrarInfo}>
                   {evento.name}

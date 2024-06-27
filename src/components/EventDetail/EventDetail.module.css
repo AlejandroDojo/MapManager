@@ -1,0 +1,26 @@
+.containerDetail{
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgEjemplo{
+  width: 70%;
+  
+}
+
+.containerDetailImg{
+  flex: 1;
+}
+
+.containerDetailInfo{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
