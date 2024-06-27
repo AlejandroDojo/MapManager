@@ -1,4 +1,5 @@
-import { useState } from 'react';
+
+
 import styles from './MapGallery.module.css'
 const MapGallery = ({eventos}) => {
     return (
