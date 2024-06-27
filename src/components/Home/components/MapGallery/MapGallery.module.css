@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    width: 1200px;
+    margin: 20px;
+    gap: 12px;
+    overflow: scroll;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.event {
+    width: 800px;
+    padding: 1rem;
+    border: 1px solid black;
+}
