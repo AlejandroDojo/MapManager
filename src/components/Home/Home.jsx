@@ -27,7 +27,7 @@ const Home = ({ eventos }) => {
         <MapContainer
           center={[-27.298, -55.858]}
           zoom={10}
-          style={{ height: "500px", width: "500px" }}
+          style={{ height: "500px", width: "calc(100% - 1rem)" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
