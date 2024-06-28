@@ -44,3 +44,19 @@ img {
   
 }
 
+
+
+
+
+
+.custom-marker-cluster{
+  background: #ffffff;
+  border: 5px solid #0078d1;
+  border-radius: 50%;
+  color: #000000;
+  height: 50px;
+  line-height: 25px;
+  text-align: center;
+  width: 33px;
+  font-size: 18px;
+}

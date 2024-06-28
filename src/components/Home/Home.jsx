@@ -3,8 +3,10 @@ import MapGallery from "./components/MapGallery/MapGallery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from './Home.module.css'
+import MarkerClusterGroup from "react-leaflet-cluster";
+import { DivIcon, point } from "leaflet";
 
-const Home = ({ eventos }) => {
+const Home = ({ eventos,customIcon }) => {
 
   const [mostrarInfo, setMostrarInfo] = useState(false);
 
@@ -12,6 +14,13 @@ const Home = ({ eventos }) => {
     setMostrarInfo(!mostrarInfo);
   
   };
+  const createCustomClusterIcon = function(cluster){
+    return new DivIcon({
+      html: `<div className="clusterIcon">${cluster.getChildCount()}</div>`,
+      className: "custom-marker-cluster",
+      iconSize: point(33,33,true)
+    })
+  }
   
   
 
@@ -40,12 +49,26 @@ const Home = ({ eventos }) => {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MarkerClusterGroup
+          chunkedLoading
+          iconCreateFunction={createCustomClusterIcon}
+          maxClusterRadius={30}
+          polygonOptions={{
+            fillColor: '#ffffff',
+            color: '#0078d1',
+            weight: 5,
+            opacity: 1,
+            fillOpacity: 0.8,
+          }}
+          
+          >
 
           {eventos.map((evento, index) => {
             return (
               <Marker
-              key={`${index}-${mostrarInfo}`}
+                key={`${index}-${mostrarInfo}`}
                 position={[evento.location.lat, evento.location.lng]}
+                icon={customIcon}
               >
                 <Popup>
                   {evento.name} <br />
@@ -53,12 +76,13 @@ const Home = ({ eventos }) => {
                   Empeza: 20:00 hs <hr/>
                   <Link to={`/evento/${evento._id}`}>Ir al evento</Link>
                 </Popup>
-                <Tooltip direction="top" offset={[-15, -10]}   opacity={0.8}  permanent={mostrarInfo}>
+                <Tooltip direction="top" offset={[1, -20]}   opacity={0.8}  permanent={mostrarInfo}>
                   {evento.name}
                 </Tooltip>
               </Marker>
             );
           })}
+          </MarkerClusterGroup>
         </MapContainer>
         
       </div>

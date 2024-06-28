@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MapPicker from '../MapPicker/MapPicker'; 
 
-const EventForm = () => {
+const EventForm = ({customIcon}) => {
   const [location, setLocation] = useState(null);
 
   const handleLocationSelect = (latlng) => {
@@ -57,7 +57,7 @@ const EventForm = () => {
       </div>
       <div className='containerLabel '>
         <label>Seleccionar ubicacion del evento</label>
-      <MapPicker onLocationSelect={handleLocationSelect} />
+      <MapPicker onLocationSelect={handleLocationSelect} customIcon={customIcon}/>
       {location && (
         <div>
           <p>Selected location: {location.lat}, {location.lng}</p>
