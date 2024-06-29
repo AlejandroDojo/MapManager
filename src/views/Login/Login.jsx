@@ -15,7 +15,7 @@ const Login = () => {
                 <img src={Logo} alt="logoEvent" />
                 </div>
                     <div className={styles.inputBox}>
-                        <h3>INICAIR SESSIÓN</h3>
+                        <h3>INICIAR SESSIÓN</h3>
                         <div className={styles.inputGroup}>
                             <input
                                 type="email"

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MapPicker from '../MapPicker/MapPicker'; 
+import MapPicker from '../../components/MapPicker/MapPicker';
 
 const EventForm = ({customIcon}) => {
   const [location, setLocation] = useState(null);

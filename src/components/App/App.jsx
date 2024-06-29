@@ -1,19 +1,19 @@
-import { Link, Routes } from 'react-router-dom'
-import EventForm from '../EventForm/EventForm'
+import { Routes } from 'react-router-dom'
+import EventForm from '../../views/EventForm/EventForm'
 import './App.css'
 import { Route } from 'react-router-dom'
 import { useState } from 'react'
 import {BrowserRouter} from 'react-router-dom';
-
 import Header from '../Header/Header'
-import Register from '../Register/Register'
-import Home from '../Home/Home'
-import { eventosPrueba } from '../../assets/eventosPrueba'
-import EventDetail from '../EventDetail/EventDetail'
-import MyProfile from '../MyProfile/MyProfile'
-import NearbyEvents from '../NearbyEvents/NearbyEvents'
+import Register from '../../views/Register/Register'
+import Home from '../../views/Home/Home'
+import { eventosPrueba } from '../../utils/eventosPrueba'
+import EventDetail from '../../views/EventDetail/EventDetail'
+import MyProfile from '../../views/MyProfile/MyProfile'
+import NearbyEvents from '../../views/NearbyEvents/NearbyEvents'
 import { Icon } from 'leaflet'
 import markerIcon from '../../assets/markerIcon.png'
+import Login from '../../views/Login/Login'
 
 
 
@@ -30,15 +30,9 @@ function App() {
     
   })
 
-
-
-
   return (
     <div>
       <Header/>
-      <h3>Pagina principal</h3>
-      
-      
       <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home eventos={eventos} customIcon={customIcon}/>}/>
@@ -47,6 +41,7 @@ function App() {
             <Route path='//nearbyevents' element={<NearbyEvents/>}/>
             <Route path='/myprofile' element={<MyProfile/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/login' element={<Login/>}/>
           </Routes>
       </BrowserRouter>
     </div>

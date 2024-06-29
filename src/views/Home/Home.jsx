@@ -1,5 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
-import MapGallery from "./components/MapGallery/MapGallery";
+import MapGallery from "../../components/MapGallery/MapGallery";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import styles from './Home.module.css'
