@@ -10,8 +10,8 @@ const Header = () => {
         <img src={Logo} alt="logoEvent" className={styles.headerLogo} />
       </a>
       <nav className={styles.headerNav}>
-        <a href="" className={styles.headerNavInicio}>Iniciar Sesion</a>
-        <a href="" className={styles.headerNavRegistrarse}>Registrarse</a>
+        <a href="/login" className={styles.headerNavInicio}>Iniciar Sesion</a>
+        <a href="/register" className={styles.headerNavRegistrarse}>Registrarse</a>
         <img src={UserLogo} alt="userLogo"  className={styles.headerLogo}/>
       </nav>
 
