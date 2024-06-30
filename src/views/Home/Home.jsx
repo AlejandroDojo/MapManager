@@ -5,6 +5,7 @@ import { useState } from "react";
 import styles from './Home.module.css'
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { DivIcon, point } from "leaflet";
+import MapCard from "../../components/MapCard/MapCard";
 
 const Home = ({ eventos,customIcon }) => {
 
@@ -70,10 +71,9 @@ const Home = ({ eventos,customIcon }) => {
                 position={[evento.location.lat, evento.location.lng]}
                 icon={customIcon}
               >
-                <Popup>
-                  {evento.name} <br />
-                  {evento.description} <br />
-                  Empeza: 20:00 hs <hr/>
+                <Popup className={styles.popup} >
+                  
+                  <MapCard name={evento.name} description={evento.description}/> <hr/>
                   <Link to={`/evento/${evento._id}`}>Ir al evento</Link>
                 </Popup>
                 <Tooltip direction="top" offset={[1, -20]}   opacity={0.8}  permanent={mostrarInfo}>
