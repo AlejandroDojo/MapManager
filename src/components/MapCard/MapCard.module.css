@@ -1,0 +1,11 @@
+.container {
+    width: calc(100%);
+}
+
+.container img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    padding: 0;
+    margin: 0;
+}

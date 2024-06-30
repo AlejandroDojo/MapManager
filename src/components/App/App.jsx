@@ -2,7 +2,7 @@ import { Routes } from 'react-router-dom'
 import EventForm from '../../views/EventForm/EventForm'
 import './App.css'
 import { Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {BrowserRouter} from 'react-router-dom';
 import Header from '../Header/Header'
 import Register from '../../views/Register/Register'
@@ -14,21 +14,20 @@ import NearbyEvents from '../../views/NearbyEvents/NearbyEvents'
 import { Icon } from 'leaflet'
 import markerIcon from '../../assets/markerIcon.png'
 import Login from '../../views/Login/Login'
-
+import Chat from '../Chat/Chat'
 
 
 function App() {
   
-  const [eventos, setEventos] = useState(eventosPrueba)
+  const [eventos, setEventos] = useState(eventosPrueba);
   //creando el icono del mapa
   const customIcon = new Icon({
     iconUrl:markerIcon,
     iconSize:[44,44],
     popupAnchor: [1, -20],
-    
-    
-    
   })
+
+
 
   return (
     <div>
