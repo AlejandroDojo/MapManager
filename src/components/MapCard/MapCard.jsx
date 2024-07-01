@@ -1,11 +1,12 @@
 import imagenEjemplo from '../../assets/ejemploimg.jpg'
 import styles from './MapCard.module.css'
-const MapCard = ({name, description}) => {
+const MapCard = ({name, description,imageUrl}) => {
+
 
     return (
         <div>
             <div className={styles.container}>
-                <img src={imagenEjemplo} alt="Una imagen" />
+                <img src={imageUrl} alt={name} />
             </div>
             <div>
                 <h3>{name}</h3>

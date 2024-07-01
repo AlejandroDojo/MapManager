@@ -45,9 +45,9 @@ const EventDetail = ({eventos}) => {
           </ul>
         </div>
         <p>{evento.description}</p>
-        <p>Fecha de inicio: {evento.startDate}</p>
-        <p>Fecha de fin: {evento.endDate}</p>
-        <p>Precio: {evento.price}</p>
+        <p>Fecha de inicio: {evento.startDate || ""}</p>
+        <p>Fecha de fin: {evento.endDate || ""}</p>
+        <p>Precio: {evento.price || ""}</p>
 
       </div>
       
