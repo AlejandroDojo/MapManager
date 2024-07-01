@@ -1,15 +1,31 @@
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import MapGallery from "../../components/MapGallery/MapGallery";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './Home.module.css'
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { DivIcon, point } from "leaflet";
 import MapCard from "../../components/MapCard/MapCard";
+import axios from 'axios'
 
 const Home = ({ eventos,customIcon }) => {
 
   const [mostrarInfo, setMostrarInfo] = useState(false);
+  const [events, setEvents] = useState({})
+  const [loading, setLoading] = useState(false)
+
+
+  useEffect(() => {
+    axios.get('http://localhost:8080/api/getEvents')
+      .then((res)=> {
+        setEvents(res.data)
+        setLoading(true)}
+      )
+      .catch(err => console.log(err))
+  
+    
+  }, [])
+  
 
   const handleMostrarInfo = () => {
     setMostrarInfo(!mostrarInfo);
@@ -22,7 +38,12 @@ const Home = ({ eventos,customIcon }) => {
       iconSize: point(33,33,true)
     })
   }
-  
+
+
+  if(!loading){
+    return <div>Cargando...</div>
+  }
+  console.log(events);
   
 
   return (
@@ -64,16 +85,16 @@ const Home = ({ eventos,customIcon }) => {
           
           >
 
-          {eventos.map((evento, index) => {
+          {events.map((evento, index) => {
             return (
               <Marker
                 key={`${index}-${mostrarInfo}`}
-                position={[evento.location.lat, evento.location.lng]}
+                position={[evento.location[0], evento.location[1]]}
                 icon={customIcon}
               >
                 <Popup className={styles.popup} >
                   
-                  <MapCard name={evento.name} description={evento.description}/> <hr/>
+                  <MapCard name={evento.name} description={evento.description} imageUrl={evento.imageUrl}/> <hr/>
                   <Link to={`/evento/${evento._id}`}>Ir al evento</Link>
                 </Popup>
                 <Tooltip direction="top" offset={[1, -20]}   opacity={0.8}  permanent={mostrarInfo}>
