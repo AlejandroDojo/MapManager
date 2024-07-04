@@ -92,7 +92,7 @@ const Home = ({ eventos,customIcon }) => {
                 position={[evento.location[0], evento.location[1]]}
                 icon={customIcon}
               >
-                <Popup className={styles.popup} >
+                <Popup className="popup" autoPan={true} >
                   
                   <MapCard name={evento.name} description={evento.description} imageUrl={evento.imageUrl}/> <hr/>
                   <Link to={`/evento/${evento._id}`}>Ir al evento</Link>

@@ -1,4 +1,4 @@
-import Logo from '../../assets/Logo Blanco.png'
+import Logo from '../../assets/LogoBlanco.png'
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 
