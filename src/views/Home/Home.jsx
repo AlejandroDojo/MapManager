@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from './Home.module.css'
 import MarkerClusterGroup from "react-leaflet-cluster";
-import { DivIcon, point } from "leaflet";
+import { DivIcon, point} from "leaflet";
 import MapCard from "../../components/MapCard/MapCard";
 import axios from 'axios'
 
-const Home = ({ eventos,customIcon }) => {
+const Home = ({ customIcon }) => {
 
   const [mostrarInfo, setMostrarInfo] = useState(false);
   const [events, setEvents] = useState({})
@@ -56,7 +56,7 @@ const Home = ({ eventos,customIcon }) => {
       </ul>
       <div>Este es el componete de home</div>
       <div>
-        <MapGallery eventos={eventos} />
+        <MapGallery eventos={events} />
       </div>
 
       <div className="mapContainer">

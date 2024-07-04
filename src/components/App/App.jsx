@@ -36,7 +36,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home eventos={eventos} customIcon={customIcon}/>}/>
             <Route path='/eventform' element={<EventForm customIcon={customIcon}/>}/>
-            <Route path='/evento/:id' element={<EventDetail eventos={eventos}/>}/>
+            <Route path='/evento/:id' element={<EventDetail eventos={eventos} customIcon={customIcon}/>}/>
             <Route path='//nearbyevents' element={<NearbyEvents/>}/>
             <Route path='/myprofile' element={<MyProfile/>}/>
             <Route path='/register' element={<Register/>}/>
