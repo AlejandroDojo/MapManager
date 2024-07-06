@@ -5,14 +5,14 @@ import 'leaflet/dist/leaflet.css';
 
 
 
-const MapPicker = ({ onLocationSelect,customIcon }) => {
-  const [position, setPosition] = useState(null);
+const MapPicker = ({ onLocationSelect,customIcon,inicialPosition, noRedirect }) => {
+  const [position, setPosition] = useState(inicialPosition);
   const [redirected, setRedirected] = useState(false);
 
   const LocationMarker = () => {
     const map = useMapEvents({
       click(e) {
-        if (!redirected) {
+        if (!noRedirect && !redirected) {
           map.locate();
         } else {
           setPosition(e.latlng);
@@ -20,7 +20,7 @@ const MapPicker = ({ onLocationSelect,customIcon }) => {
         }
       },
       locationfound(e) {
-        if (!redirected) {
+        if (!noRedirect && !redirected) {
           setPosition(e.latlng);
           map.flyTo(e.latlng, map.getZoom());
           setRedirected(true);
@@ -47,7 +47,7 @@ const MapPicker = ({ onLocationSelect,customIcon }) => {
   };
 
   return (
-    <MapContainer center={[-27.298, -55.858]} zoom={13} style={{ height: '500px', width: '500px' }}>
+    <MapContainer center={inicialPosition || [-27.298, -55.858]} zoom={13} style={{ height: '500px', width: '500px' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

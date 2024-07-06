@@ -58,7 +58,7 @@ const Register = () => {
                             />
                         </div>
                     </div>
-                    <button type="submit">Registrar</button>
+                    <button className={styles.button} type="submit">Registrar</button>
                 </form>
             </div>
         </div>
