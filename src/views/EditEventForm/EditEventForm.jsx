@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MapPicker from '../../components/MapPicker/MapPicker';
 import axios from 'axios'
+import { useParams } from 'react-router-dom';
 
-const EventForm = ({customIcon}) => {
+const EditEventForm = ({customIcon}) => {
   const [location, setLocation] = useState(null);
   const [name, setName] = useState("");
   const [type, setType] = useState([]);
@@ -11,13 +12,37 @@ const EventForm = ({customIcon}) => {
   const [endDate, setEndDate] = useState(Date.now)
   const [imagen, setImagen] = useState(null);
   const [price, setPrice] = useState("")
-  
-  
-  
-  
+  const [evento, setEvento] = useState({});
+  const [loaded, setLoaded] = useState(false);
+  const { id } = useParams();
+
+
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/getEvent/${id}`)
+      .then((res) => {
+        setEvento(res.data);
+        setLoaded(true);
+        setLocation(res.data.location)
+        setName(res.data.name)
+        setType(res.data.type)
+        setDescription(res.data.description)
+        setStartDate(res.data.startDate)
+        setEndDate(res.data.endDate)
+        setPrice(res.data.price)
+
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+
+
+
   const handleLocationSelect = (latlng) => {
     setLocation([latlng.lat,latlng.lng]);
   };
+
 
   const handleTypeSelect = (e)=>{
     if(!(type.includes(e.target.value))){
@@ -28,36 +53,15 @@ const EventForm = ({customIcon}) => {
 
     }
   }
-  
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost:8080/api/upload', {
-      name,
-      type,
-      description,
-      price,
-      startDate,
-      endDate,
-      location,
-      imagen
-    }, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    }
-  ).then((data)=>{
-    console.log(data)
+  if (!loaded) {
+    return <div>Cargando...</div>;
+  }
 
-  })
-  .catch((err)=> console.log(err))
-  
-    
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form >
       <div className='containerLabel titulo'>
       <h3>Crear Evento</h3>
       </div>
@@ -108,7 +112,7 @@ const EventForm = ({customIcon}) => {
       </div>
       <div className='containerLabel '>
         <label>Seleccionar ubicacion del evento</label>
-      <MapPicker onLocationSelect={handleLocationSelect} customIcon={customIcon} inicialPosition={null} noRedirect={false}/>
+      <MapPicker onLocationSelect={handleLocationSelect} customIcon={customIcon} inicialPosition={location} noRedirect={true}/>
       {location && (
         <div>
           <p>Selected location: {location[0]}, {location[1]}</p>
@@ -120,7 +124,8 @@ const EventForm = ({customIcon}) => {
         <button type="submit">Submit</button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default EventForm;
+
+export default EditEventForm

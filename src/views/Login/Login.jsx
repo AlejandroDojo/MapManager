@@ -46,7 +46,7 @@ const Login = () => {
                         />
                         <label htmlFor="remember">Recordar</label>
                     </div>
-                    <button type="submit">Iniciar</button>
+                    <button className={styles.button} type="submit">Iniciar</button>
                 </form>
             </div>
         </div>

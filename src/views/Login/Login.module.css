@@ -72,7 +72,7 @@ img {
     cursor: pointer;
 }
 
-button {
+.button {
     color: white;
     border: none;
     margin-left: 145px;
@@ -84,6 +84,6 @@ button {
     background: linear-gradient(#4f41a2, #395aa0);
 }
 
-button:hover {
+.button:hover {
     background: linear-gradient(#382c79, #395aa0);
 }
