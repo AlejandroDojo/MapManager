@@ -37,21 +37,37 @@ const EditEventForm = ({customIcon}) => {
   }, []);
 
 
-
-
   const handleLocationSelect = (latlng) => {
     setLocation([latlng.lat,latlng.lng]);
   };
 
-
   const handleTypeSelect = (e)=>{
-    if(!(type.includes(e.target.value))){
-        setType([...type,e.target.value]);
+    const value = e.target.value;
+    if(!(type.includes(value))){
+        setType([...type, value ]);
     } else{
-      const filterType = type.filter((type)=> type !==e.target.value)
+      const filterType = type.filter((type)=> type !== value)
       setType(filterType);
 
     }
+  }
+
+  const handleEditEventForm =(e)=>{
+    e.preventDefault();
+    axios.put(`http://localhost:8080/api/update/${id}`,{
+      name,
+      type,
+      description,
+      price,
+      startDate,
+      endDate,
+      location,
+      imagen
+    },{
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    })
   }
 
 
@@ -61,7 +77,7 @@ const EditEventForm = ({customIcon}) => {
 
 
   return (
-    <form >
+    <form onSubmit={handleEditEventForm}>
       <div className='containerLabel titulo'>
       <h3>Crear Evento</h3>
       </div>
@@ -72,19 +88,19 @@ const EditEventForm = ({customIcon}) => {
       <div className='containerLabel'>
         <label>tipo</label>
         <div className='checkboxContainer'>
-          <label>Festivo</label><input type='checkbox' value="Festivo" onChange={handleTypeSelect}/>
+          <label>Festivo</label><input type='checkbox' value="Festivo" onChange={handleTypeSelect} checked={type.includes("Festivo")}/>
         </div>
         <div>
-          <label>Caridad</label><input type='checkbox' value="Caridad" onChange={handleTypeSelect}/>
+          <label>Caridad</label><input type='checkbox' value="Caridad" onChange={handleTypeSelect} checked={type.includes("Caridad")}/>
         </div>
         <div>
-          <label>Competitivo</label><input type='checkbox' value="Competitivo" onChange={handleTypeSelect}/>
+          <label>Competitivo</label><input type='checkbox' value="Competitivo" onChange={handleTypeSelect} checked={type.includes("Competitivo")}/>
         </div>
         <div>
-          <label>Turistico</label><input type='checkbox' value="Turistico" onChange={handleTypeSelect}/> 
+          <label>Turistico</label><input type='checkbox' value="Turistico" onChange={handleTypeSelect} checked={type.includes("Turistico")}/> 
         </div>
         <div>
-          <label>Social</label><input type='checkbox' value="Social" onChange={handleTypeSelect}/>
+          <label>Social</label><input type='checkbox' value="Social" onChange={handleTypeSelect} checked={type.includes("Social")}/>
         </div>
       </div>
       <div className='containerLabel'>
@@ -97,6 +113,11 @@ const EditEventForm = ({customIcon}) => {
         <input type="number" value={price} onChange={(e)=>setPrice(e.target.value)}/>
       </div>
       <div className='containerLabel'>
+        <label>Imagen seleccionada</label>
+        <img src={evento.imageUrl} alt={evento.name} width={300}/>
+      </div>
+      <div className='containerLabel'>
+
         <label htmlFor="subirImg">Subir imagen</label>
         <input type="file" id='subirImg'  onChange={(e) => setImagen(e.target.files[0])}
             required />
