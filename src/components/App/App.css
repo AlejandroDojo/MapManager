@@ -25,32 +25,6 @@ img {
   height: auto;
 }
 
-.titulo{
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-
-.containerLabel{
-  display: flex;
-  margin: 7px auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.checkboxContainer{
-  display: flex;
-  align-items: flex-start;
-  
-}
-
-
-
-
-
 
 .custom-marker-cluster{
   background: #ffffff;
