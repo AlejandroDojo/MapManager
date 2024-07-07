@@ -14,12 +14,17 @@ const MapGallery = ({ eventos }) => {
                 <div key={index} className={styles.event}>
 
                     <div> 
-                        <section>
-                            <img src={Pesca} alt="pesca" />
-                            <img src={Asado} alt="asado" />
-                            <img src={Artesania} alt="artesania" />
-                            <img src={Cine} alt="cine" />
-                            <img src={Yoga} alt="yoga" />
+                        <section className={styles.gallery}>
+                            <img className={styles.imgGallery} src={Pesca} alt="pesca" />
+                            <button className={styles.imageButton}>Ver</button>
+                            <img className={styles.imgGallery} src={Asado} alt="asado" />
+                            <button className={styles.imageButton}>Ver</button>
+                            <img className={styles.imgGallery} src={Artesania} alt="artesania" />
+                            <button className={styles.imageButton}>Ver</button>
+                            <img className={styles.imgGallery} src={Cine} alt="cine" />
+                            <button className={styles.imageButton}>Ver</button>
+                            <img className={styles.imgGallery} src={Yoga} alt="yoga" />
+                            <button className={styles.imageButton}>Ver</button>
                         </section>
                     </div>
             
