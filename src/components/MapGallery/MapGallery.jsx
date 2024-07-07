@@ -12,6 +12,7 @@ const MapGallery = ({ eventos }) => {
         {eventos.map((evento, index) => {
             return (
                 <div key={index} className={styles.event}>
+                    
                     <div> 
                         <section className={styles.gallery}>
                             <img className={styles.imgGallery} src={Pesca} alt="pesca" />
@@ -26,6 +27,7 @@ const MapGallery = ({ eventos }) => {
                             <button className={styles.imageButton}>Ver</button>
                         </section>
                     </div>
+
                 <h2>{evento.name}</h2>
                 <p>{evento.description}</p>
                 <hr />
