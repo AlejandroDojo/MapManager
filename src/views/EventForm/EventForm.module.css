@@ -2,8 +2,8 @@
   width: 100vw;
   height: 100vh;
   background: #2980B9; 
-  background: -webkit-linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9); 
-  background: linear-gradient(to top, #FFFFFF, #6DD5FA, #2980B9);
+  background: -webkit-linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9); 
+  background: linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9);
   
 
 
@@ -224,3 +224,13 @@
   padding: 5px;
 }
 
+.imagePicked{
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.datePicked{
+  color: white;
+  font-size: 16px;
+}
