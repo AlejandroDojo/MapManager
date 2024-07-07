@@ -1,53 +1,50 @@
 import { Routes } from 'react-router-dom'
-import EventForm from '../EventForm/EventForm'
+import EventForm from '../../views/EventForm/EventForm'
 import './App.css'
 import { Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {BrowserRouter} from 'react-router-dom';
-
 import Header from '../Header/Header'
-import Register from '../Register/Register'
-import MapGallery from '../MapGallery/MapGallery'
+import Register from '../../views/Register/Register'
+import Home from '../../views/Home/Home'
+import { eventosPrueba } from '../../utils/eventosPrueba'
+import EventDetail from '../../views/EventDetail/EventDetail'
+import MyProfile from '../../views/MyProfile/MyProfile'
+import NearbyEvents from '../../views/NearbyEvents/NearbyEvents'
+import { Icon } from 'leaflet'
+import markerIcon from '../../assets/markerIcon.png'
+import Login from '../../views/Login/Login'
+import Chat from '../Chat/Chat'
+import MyEvents from '../../views/MyEvents/MyEvents'
+import EditEventForm from '../../views/EditEventForm/EditEventForm'
+
 
 function App() {
   
-  const [eventos, setEventos] = useState([
-    {
-      _id: 1,
-      name: "San Juan",
-      type: ["festival"],
-      description: "Fiesta Patronal",
-      startDate: "2024/20/8",
-      endDate: "2024/22/8",
-      price: 0,
-      location: {
-        lat: "-27.348860009198418",
-        lng: "-55.85442781406063"
-      }
-    },
-    {
-      _id: 2,
-      name: "Camping",
-      type: ["social", "naturaleza"],
-      description: "Disfrutar de la naturaleza",
-      startDate: "2024/20/8",
-      endDate: "2024/23/8",
-      price: 0,
-      location: {
-        lat: "-27.319538552180447",
-        lng: "-55.86065053913495"
-      }
-    }
-  ])
+  const [eventos, setEventos] = useState(eventosPrueba);
+  //creando el icono del mapa
+  const customIcon = new Icon({
+    iconUrl:markerIcon,
+    iconSize:[44,44],
+    popupAnchor: [1, -20],
+  })
+
+
+
   return (
     <div>
       <Header/>
-      <h3>Pagina principal</h3>
       <BrowserRouter>
           <Routes>
-            <Route path='/' element={<MapGallery eventos={eventos}/>}/>
-            <Route path='/eventform' element={<EventForm/>}/>
+            <Route path='/' element={<Home eventos={eventos} customIcon={customIcon}/>}/>
+            <Route path='/eventform' element={<EventForm customIcon={customIcon}/>}/>
+            <Route path='/evento/:id' element={<EventDetail eventos={eventos} customIcon={customIcon}/>}/>
+            <Route path='//nearbyevents' element={<NearbyEvents/>}/>
+            <Route path='/myevents' element={<MyEvents/>}/>
+            <Route path='/editevent/:id' element={<EditEventForm customIcon={customIcon}/>}/>
+            <Route path='/myprofile' element={<MyProfile/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/login' element={<Login/>}/>
           </Routes>
       </BrowserRouter>
     </div>

@@ -1,0 +1,62 @@
+.container{
+  background: #373B44;  
+  background: -webkit-linear-gradient(to bottom, #4286f4, #373B44);  
+  background: linear-gradient(to bottom, #4286f4, #373B44); 
+  padding: 5px;
+  
+  height: 100%;
+}
+
+.containerDetail{
+    width: 70%;
+    height: 45vh;
+    margin: 0px auto;
+    margin-bottom: 20px;
+    padding: 5px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgEjemplo{
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  height: 400px;
+  object-fit: cover;
+  padding: 0;
+  
+}
+
+.containerDetailImg{
+  flex: 1;
+  width: 800px;
+  min-height: 200px;
+  padding: 2px;
+}
+
+.containerDetailInfo{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.mapContainer{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.typeContainer{
+  display: flex;
+  gap: 25px;
+}
+
+.typeContainer > ul {
+  list-style-type: circle;
+
+}
