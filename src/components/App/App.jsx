@@ -17,11 +17,13 @@ import Login from '../../views/Login/Login'
 import Chat from '../Chat/Chat'
 import MyEvents from '../../views/MyEvents/MyEvents'
 import EditEventForm from '../../views/EditEventForm/EditEventForm'
+import FCallendar from '../../views/Calendar/Calendar'
 
 
 function App() {
   
   const [eventos, setEventos] = useState(eventosPrueba);
+  const [logged, setLogged]= useState(true)
   //creando el icono del mapa
   const customIcon = new Icon({
     iconUrl:markerIcon,
@@ -33,8 +35,9 @@ function App() {
 
   return (
     <div>
-      <Header/>
+      
       <BrowserRouter>
+          <Header   logged={logged} />
           <Routes>
             <Route path='/' element={<Home eventos={eventos} customIcon={customIcon}/>}/>
             <Route path='/eventform' element={<EventForm customIcon={customIcon}/>}/>
@@ -45,6 +48,7 @@ function App() {
             <Route path='/myprofile' element={<MyProfile/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/myCalendar' element={<FCallendar/>}/>
           </Routes>
       </BrowserRouter>
     </div>
