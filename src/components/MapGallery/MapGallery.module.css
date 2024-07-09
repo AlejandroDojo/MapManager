@@ -1,4 +1,4 @@
-.container {
+/* .container {
   display: flex;
   flex-wrap: wrap;
 
@@ -29,4 +29,47 @@
   background-color: rgb(0, 85, 119);
   border: 1px solid rgb(0, 0, 113);
   border-radius: 10px;
+} */
+
+.gallery {
+    margin: 0px auto;
+    display: flex;
+    width: 980px;
+    height: 200px;
+}
+
+.gallery .imgGallery {
+    width: 0px;
+    flex-grow: 1;
+    object-fit: cover;
+    opacity: 8;
+    transition: .5s ease;
+}
+
+.imgGallery {
+    padding: 0px;
+}
+
+.gallery .imgGallery:hover {
+    cursor: pointer;
+    width: 300px;
+    opacity: 1;
+    filter: contrast(120%);
+}
+
+.imageButton {
+    margin-top: 157px;
+    margin-left: 10px;
+    padding: 5px;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    transform: translateX(-150%);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.imageContainer:hover .imageButton {
+    opacity: 1;
 }
