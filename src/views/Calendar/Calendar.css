@@ -1,0 +1,7 @@
+.calendarContainer{
+    height: 500;
+    width: 500;
+}
+.rbc-month-view{
+    min-height: 500px;
+}
