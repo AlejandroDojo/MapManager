@@ -18,6 +18,7 @@ const Home = ({ customIcon }) => {
   useEffect(() => {
     axios.get('http://localhost:8080/api/getEvents')
       .then((res)=> {
+        console.log(res.data)
         setEvents(res.data)
         setLoading(true)}
       )
@@ -25,6 +26,7 @@ const Home = ({ customIcon }) => {
   
     
   }, [])
+
   
 
   const handleMostrarInfo = () => {

@@ -6,7 +6,7 @@ import axios from "axios";
 import MapCard from "../../components/MapCard/MapCard";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 
-const EventDetail = ({customIcon}) => {
+const EventDetail = ({customIcon, añadirAsistencia}) => {
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
@@ -21,6 +21,11 @@ const EventDetail = ({customIcon}) => {
       .catch((err) => console.log(err));
   }, []);
 
+  const actualizarCalendario=()=>{
+    //llamar a la funcion y enviarle el id del evento para añadir al calendario 
+    añadirAsistencia(evento)
+    alert(`se te ha añadido al evento con id: ${evento._id}`)
+  }
   
   if (!loaded) {
     return <div>Cargando...</div>;
@@ -54,6 +59,8 @@ const EventDetail = ({customIcon}) => {
         {!evento.startDate ? "" : <p>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
         {!evento.endDate ? "" : <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
         {!evento.price ? "" : <p>Precio: {evento.price}</p>}
+        {!evento.startDate ? "" : <button  onClick={actualizarCalendario}  >Asisitir al evento</button> }
+        
       </div>
 
     </div>

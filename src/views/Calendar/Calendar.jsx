@@ -6,30 +6,17 @@ import "dayjs/locale/es"
 import { useState } from "react";
 
 
-const FCallendar=()=>{
+const FCallendar=({eventos})=>{
+
+
     dayjs.locale("es");
     const localizer= dayjsLocalizer(dayjs)
-    const myEventsList=[
-        {
-            start: dayjs("2024-07-10T12:00:00").toDate(),
-            end: dayjs("2024-07-11T12:00:00").toDate(),
-            title: "Evento 1"
-        },
-        {
-            start: dayjs("2024-07-8T09:00:00").toDate(),
-            end: dayjs("2024-07-8T10:00:00").toDate(),
-            title: "Evento 2"
-        }
-
-    ]
-
     return(
         <div className="calendarContainer">
             <Calendar 
                 localizer={localizer}
-                events={myEventsList}
+                events={eventos}
                 views={["month", "week", "day"]}
-                defaultView="week"
                 messages={{
                     next: "Siguiente",
                     previous: "Anterior",
