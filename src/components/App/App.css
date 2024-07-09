@@ -25,32 +25,6 @@ img {
   height: auto;
 }
 
-.titulo{
-  font-size: 28px;
-  font-weight: bold;
-  margin-bottom: 15px;
-}
-
-
-.containerLabel{
-  display: flex;
-  margin: 7px auto;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-.checkboxContainer{
-  display: flex;
-  align-items: flex-start;
-  
-}
-
-
-
-
-
 
 .custom-marker-cluster{
   background: #ffffff;
@@ -74,7 +48,7 @@ img {
 }
 
 .leaflet-popup-content {
-  margin: 13px 24px 13px 20px;
+  margin: 0;
   line-height: 1.3;
   font-size: 13px;
   font-size: 1.08333em;

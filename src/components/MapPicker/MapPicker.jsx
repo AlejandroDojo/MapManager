@@ -47,7 +47,7 @@ const MapPicker = ({ onLocationSelect,customIcon,inicialPosition, noRedirect }) 
   };
 
   return (
-    <MapContainer center={inicialPosition || [-27.298, -55.858]} zoom={13} style={{ height: '500px', width: '500px' }}>
+    <MapContainer center={inicialPosition || [-27.298, -55.858]} zoom={13} style={{ height: '100%', width: '100%' }}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
