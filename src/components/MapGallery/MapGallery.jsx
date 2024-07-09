@@ -9,32 +9,17 @@ import styles from "./MapGallery.module.css";
 const MapGallery = ({ eventos }) => {
     return (
     <div className={styles.container}>
-        {eventos.map((evento, index) => {
+         <div className={styles.event}>
+            {eventos.map((evento, index) => {
             return (
-                <div key={index} className={styles.event}>
-                    
-                    <div> 
-                        <section className={styles.gallery}>
-                            <img className={styles.imgGallery} src={Pesca} alt="pesca" />
-                            <button className={styles.imageButton}>Ver</button>
-                            <img className={styles.imgGallery} src={Asado} alt="asado" />
-                            <button className={styles.imageButton}>Ver</button>
-                            <img className={styles.imgGallery} src={Artesania} alt="artesania" />
-                            <button className={styles.imageButton}>Ver</button>
-                            <img className={styles.imgGallery} src={Cine} alt="cine" />
-                            <button className={styles.imageButton}>Ver</button>
-                            <img className={styles.imgGallery} src={Yoga} alt="yoga" />
-                            <button className={styles.imageButton}>Ver</button>
-                        </section>
-                    </div>
-
-                <h2>{evento.name}</h2>
-                <p>{evento.description}</p>
-                <hr />
+            <section key={index}className={styles.gallery}>
+                <img className={styles.imgGallery} src={evento.imageUrl} alt={evento.name} />
+                <button className={styles.imageButton}>Ver</button>
                 <Link className={styles.linkStyles} to={`/evento/${evento._id}`}>Ir al evento </Link>
+            </section>);})} 
+                
             </div>
-        );
-        })}
+        
     </div>
     );
 };
