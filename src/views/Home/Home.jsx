@@ -18,6 +18,7 @@ const Home = ({ customIcon }) => {
   useEffect(() => {
     axios.get('http://localhost:8080/api/getEvents')
       .then((res)=> {
+        console.log(res.data)
         setEvents(res.data)
         setLoading(true)}
       )
@@ -25,6 +26,7 @@ const Home = ({ customIcon }) => {
   
     
   }, [])
+
   
 
   const handleMostrarInfo = () => {
@@ -48,13 +50,6 @@ const Home = ({ customIcon }) => {
 
   return (
     <>
-      <ul className={styles.navContainer}>
-        <Link className={styles.link} to={'/'}>Home</Link>
-        <Link className={styles.link} to={'/nearbyevents'}>Eventos cercanos</Link>
-        <Link className={styles.link} to={'/myprofile'}>Mi perfil</Link>
-        <Link className={styles.link} to={'/myevents'}>Mis eventos</Link>
-        <Link className={styles.link} to={'/eventform'}>Crear Evento</Link>
-      </ul>
       <div>Este es el componete de home</div>
       <div>
         <MapGallery eventos={events} />

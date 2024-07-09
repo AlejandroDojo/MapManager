@@ -2,7 +2,7 @@
   height: 80px;
   display: flex;
   justify-content: space-between;
-  background-color: coral;
+  background: linear-gradient(#4f41a2, #395aa0);
   align-items: center;
   padding: 0px 20px;
 }
@@ -26,8 +26,8 @@ a {
 }
 .headerNavRegistrarse:hover {
   background-color: #e7e7e7;
-  color: coral;
-  box-shadow: 3px 3px 5px coral;
+  color: #4f41a2;
+  box-shadow: 3px 3px 5px #8783a3;
 }
 .headerLogo {
   height: 125px;
@@ -36,4 +36,9 @@ a {
 
 .headerNavInicio {
   color: white;
+}
+.link{
+  color: white;
+  font-size: 24px;
+  font-weight: 500;
 }
