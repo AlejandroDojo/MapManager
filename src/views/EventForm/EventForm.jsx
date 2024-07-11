@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MapPicker from "../../components/MapPicker/MapPicker";
 import axios from "axios";
 import styles from "./EventForm.module.css";
+import imageIcon from "../../assets/imageIcon.png";
 
 const EventForm = ({ customIcon }) => {
   const [location, setLocation] = useState(null);
@@ -165,9 +166,15 @@ const EventForm = ({ customIcon }) => {
                 onChange={(e) => handleFileChange(e)}
                 required
               />
-              <label htmlFor="subirImg" className={styles.customFileInputLabel}>
-                Seleccionar archivo
-              </label>
+              <div className={styles.customFileInputLabel}>
+                <img
+                  className={styles.imageIcon}
+                  src={imageIcon}
+                  alt={imageIcon}
+                  width={32}
+                />
+                <label htmlFor="subirImg">Seleccionar archivo</label>
+              </div>
             </div>
             {fileName && <span className={styles.fileName}>{fileName}</span>}
           </div>
@@ -203,13 +210,7 @@ const EventForm = ({ customIcon }) => {
               inicialPosition={null}
               noRedirect={false}
             />
-            {location && (
-              <div>
-                <p>
-                  Selected location: {location[0]}, {location[1]}
-                </p>
-              </div>
-            )}
+            
           </div>
         </div>
         <div className={styles.buttonContainer}>
