@@ -113,6 +113,8 @@
   background-color: #F3F3F3;
   border-radius: 10px;
   transition: all 0.5s;
+  
+  
 }
 .textAreaStyle:hover,
 .textAreaStyle:focus {
@@ -230,6 +232,16 @@
 .datePicked {
   color: white;
   font-size: 16px;
+}
+
+.locationError{
+  color: red;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-align: center;
+  
+  
 }
 
 /* Media Queries for responsiveness */

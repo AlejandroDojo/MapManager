@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import styles from "../EventForm/EventForm.module.css";
 import { format } from "date-fns";
 import imageIcon from "../../assets/imageIcon.png";
+import { useNavigate } from "react-router-dom";
 
 const EditEventForm = ({ customIcon }) => {
   const [location, setLocation] = useState(null);
@@ -19,6 +20,7 @@ const EditEventForm = ({ customIcon }) => {
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
   const [fileName, setFileName] = useState("Ninguna imagen seleccionada");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -77,6 +79,7 @@ const EditEventForm = ({ customIcon }) => {
         },
       }
     );
+    navigate(`/evento/${id}`)
   };
 
   if (!loaded) {
@@ -194,7 +197,7 @@ const EditEventForm = ({ customIcon }) => {
                 type="file"
                 id="subirImg"
                 onChange={(e) => handleFileChange(e)}
-                required
+                
                 />
               <div className={styles.customFileInputLabel}>
                 <img
@@ -250,6 +253,7 @@ const EditEventForm = ({ customIcon }) => {
               inicialPosition={location}
               noRedirect={true}
             />
+            {location===null?<p className={styles.locationError}>La ubicacion es necesaria</p>:""}
           </div>
         </div>
         <div className={styles.buttonContainer}>
