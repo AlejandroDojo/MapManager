@@ -4,11 +4,6 @@
   background: #2980B9; 
   background: -webkit-linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9); 
   background: linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9);
-  
-
-
-  
-
 }
 
 .inputTitle {
@@ -28,13 +23,11 @@
 .primerFormContainer {
   display: flex;
   flex-direction: column;
-
   gap: 15px;
   padding: 5px;
 }
 
 .checkboxContainer {
-  
   display: flex;
   gap: 15px;
   align-items: center;
@@ -58,7 +51,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-
   gap: 10px;
 }
 
@@ -103,7 +95,7 @@
   transition: all 0.5s;
 }
 .inputFormStyle:hover,
-.inputFormStyle:focus{
+.inputFormStyle:focus {
   border: 2px solid #4a4aec;
   box-shadow: 0px 0px 0px 7px rgba(74, 93, 236, 0.2);
   background-color: white;
@@ -123,11 +115,10 @@
   transition: all 0.5s;
 }
 .textAreaStyle:hover,
-.textAreaStyle:focus{
+.textAreaStyle:focus {
   border: 2px solid #4a4aec;
   box-shadow: 0px 0px 0px 7px rgba(74, 93, 236, 0.2);
   background-color: white;
-
 }
 
 .tituloPrincipal {
@@ -166,12 +157,11 @@
   background-color: #0256b2;
 }
 
-.buttonContainer{
+.buttonContainer {
   position: absolute;
   bottom: 5px;
   left: 100px;
 }
-
 
 .inputContainer {
   display: flex;
@@ -198,15 +188,22 @@
 }
 
 .customFileInputLabel {
-  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   border: 2px solid #5900ff95;
   color: white;
   background-color: #5900ff69;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  display: inline-block;
   transition: background-color 0.3s, border-color 0.3s;
+}
+
+.imageIcon {
+  margin: 0;
+  padding: 0;
 }
 
 .customFileInputLabel:hover {
@@ -220,17 +217,107 @@
   margin-left: 10px;
 }
 
-.checkboxInput{
+.checkboxInput {
   padding: 5px;
 }
 
-.imagePicked{
+.imagePicked {
   width: 300px;
   height: 200px;
   object-fit: cover;
 }
 
-.datePicked{
+.datePicked {
   color: white;
   font-size: 16px;
+}
+
+/* Media Queries for responsiveness */
+@media (max-width: 1024px) {
+  .formContainer {
+    width: 90%;
+  }
+
+  .mapContainer {
+    width: 100%;
+  }
+
+  .dateInput {
+    width: 100%;
+  }
+
+  .textAreaStyle {
+    width: 100%;
+  }
+
+  .buttonContainer{
+    position: inherit;
+    left: 35px;
+  }
+}
+
+@media (max-width: 768px) {
+  .secondFormContainer {
+    flex-direction: column;
+  }
+
+  .mapContainer {
+    width: 100%;
+    height: 200px;
+  }
+
+  .buttonContainer {
+    position: relative;
+    left: 0;
+    margin-top: 30px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .inputTitle {
+    font-size: 20px;
+  }
+
+  .labelStyle {
+    font-size: 18px;
+  }
+
+  .optional {
+    font-size: 14px;
+  }
+
+  .textAreaStyle {
+    width: 100%;
+  }
+
+  .inputFormStyle {
+    width: 100%;
+  }
+
+  .button {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .button span {
+    justify-content: center;
+  }
+
+  .customFileInputLabel {
+    padding: 10px;
+  }
+
+  .dateInput {
+    width: 100%;
+  }
+
+  .mapContainer {
+    height: 150px;
+  }
+
+  .formContainer {
+    width: 100%;
+    padding: 10px;
+  }
 }

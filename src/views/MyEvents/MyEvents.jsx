@@ -2,11 +2,17 @@ import { useEffect, useState } from "react"
 import styles from "./MyEvents.module.css"
 import { Link } from "react-router-dom";
 import axios from "axios"
+import editIcon from '../../assets/editIcon.png'
+import deleteIcon from '../../assets/deleteIcon.png'
+import Modal from "../../components/Modal/Modal";
+import Loader from "../../components/Loader/Loader";
 
 
 const MyEvents = () => {
   const [events, setEvents] = useState({})
   const [loading, setLoading] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [eventIdToDelete, setEventIdToDelete] = useState(null);
 
 
   useEffect(() => {
@@ -33,15 +39,22 @@ const MyEvents = () => {
   };
 
   const handleDelete = (eventId) => {
-    if (window.confirm('¿Estás seguro de que deseas eliminar este evento?')) {
-      deleteEvent(eventId);
+    setEventIdToDelete(eventId);
+    setIsOpen(true);
+  };
+
+  const confirmDelete = () => {
+    if (eventIdToDelete) {
+      deleteEvent(eventIdToDelete);
+      setEventIdToDelete(null);
+      setIsOpen(false);
     }
   };
 
 
 
   if(!loading){
-    return <div>Cargando...</div>
+    return <Loader/>
   }
 
 
@@ -70,8 +83,23 @@ const MyEvents = () => {
 
               </div>
               <div className={styles.buttonsContainer}>
-                <Link to={`/editevent/${evento._id}`}><button className={styles.editButton}>Editar</button></Link>
-                <button className={styles.deleteButton} onClick={()=> handleDelete(evento._id)}>Eliminar</button>
+                <Link className={styles.editButton} to={`/editevent/${evento._id}`}>
+                  <div className={styles.containerButton}>
+                  <img className={styles.iconStyle} src={editIcon} alt={editIcon} />
+                  <span>Editar</span>
+                  </div>
+                  </Link>
+                <button className={styles.deleteButton} onClick={()=> handleDelete(evento._id)}>
+                  <div className={styles.containerButton}>
+                  <img className={styles.iconStyle} src={deleteIcon} alt={deleteIcon} />
+                  <span>Eliminar</span>
+                  
+                  </div>
+                  </button>
+                  {isOpen && <Modal
+                  setIsOpen={setIsOpen}
+                  confirmDelete={confirmDelete}
+                />}
               </div>
           
           </div>
