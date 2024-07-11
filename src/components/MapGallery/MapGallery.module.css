@@ -40,7 +40,7 @@
 
 .gallery .imgGallery {
     width: 0px;
-    flex-grow: 1;
+    width: 110px;
     object-fit: cover;
     opacity: 8;
     transition: .5s ease;
@@ -72,4 +72,8 @@
 
 .imageContainer:hover .imageButton {
     opacity: 1;
+}
+
+.dad {
+  display: flex;
 }

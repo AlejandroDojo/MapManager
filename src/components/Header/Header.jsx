@@ -11,9 +11,9 @@ const Header = ({logged}) => {
       {logged
       ? <>
           <header className={styles.header}>
-            <a>
+            <div>
               <Link className={styles.link} to={'/'}>Home</Link>
-            </a>
+            </div>
             <nav className={styles.headerNav}>
             <Link className={styles.link} to={'/nearbyevents'}>Eventos cercanos</Link>
             <Link className={styles.link} to={'/myCalendar'}>Mi Calendario</Link>
