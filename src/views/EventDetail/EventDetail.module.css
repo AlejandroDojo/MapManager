@@ -60,3 +60,30 @@
   list-style-type: circle;
 
 }
+
+.containerModal{
+  width: 100%;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  background-color: #0000005d;
+  transition: transform .8s;
+  /* transform: translate(100%); */
+}
+.containerModal:target{
+  transform: translate(0);
+}
+.contentModal{
+  background-color: #fff;
+  position: relative;
+  width: 40%;
+  height: 20%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.span{
+  color: #4286f4;
+}

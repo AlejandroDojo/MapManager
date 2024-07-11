@@ -10,6 +10,7 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
+  const [showModal, setShowModal]= useState(false)
 
   useEffect(() => {
     axios
@@ -24,7 +25,7 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
   const actualizarCalendario=()=>{
     //llamar a la funcion y enviarle el id del evento para añadir al calendario 
     añadirAsistencia(evento)
-    alert(`se te ha añadido al evento con id: ${evento._id}`)
+    setShowModal(true)
   }
   
   if (!loaded) {
@@ -59,7 +60,26 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
         {!evento.startDate ? "" : <p>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
         {!evento.endDate ? "" : <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
         {!evento.price ? "" : <p>Precio: {evento.price}</p>}
-        {!evento.startDate ? "" : <button  onClick={actualizarCalendario}  >Asisitir al evento</button> }
+        {!evento.startDate ? ""
+        :<>
+        <div className='botonModal' >
+        <label htmlFor='btnModal'  className='btnACModal'  onClick={actualizarCalendario} >Asisitir al evento</label>
+        </div>
+        <input type='checkbox'  id='btnModal'  style={{display: 'none'}} ></input>
+        {showModal
+          ? <section id="containerModal"  className={styles.containerModal} >
+              <div className={styles.contentModal}>
+                <h2>Evento añadido!</h2>
+                <p>Se ha añadido el evento  <span className={styles.span} >{evento.name}</span> a tu calendario</p>
+                {/*despues con una libreria para añadir un botoncito en la derecha superior para cerrar el modal */}
+                <div className='btnCerrar' >
+                  <label htmlFor='btnModal' onClick={()=>{setShowModal(false)}}  >Cerrar</label>         
+                </div>
+              </div>
+            </section>
+            : ""
+        }
+        </>}
         
       </div>
 
