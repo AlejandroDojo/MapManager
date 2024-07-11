@@ -58,18 +58,12 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
             </ul>
           </div>
           <p>Descripcion: {evento.description}</p>
-        {!evento.startDate ? "" : <p>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.endDate ? "" : <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.price ? "" : <p>Precio: {evento.price}</p>}
+        {!evento.startDate ? "" : <p className={styles.dateInfo}>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.endDate ? "" : <p className={styles.dateInfo}>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.price ? "" : <p className={styles.priceInfo}>Precio: {evento.price}</p>}
         {!evento.startDate ? "" : <button  onClick={actualizarCalendario}  >Asisitir al evento</button> }
         </div>
 
-        <p>Descripcion: {evento.description}</p>
-        {!evento.startDate ? "" : <p>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.endDate ? "" : <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.price ? "" : <p>Precio: {evento.price}</p>}
-        {!evento.startDate ? "" : <button  onClick={actualizarCalendario}  >Asisitir al evento</button> }
-        
       </div>
       <div className={styles.mapContainer}>
         <MapContainer
