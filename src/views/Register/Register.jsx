@@ -1,17 +1,47 @@
 import Logo from '../../assets/LogoBlanco.png'
 import React, { useState } from 'react';
 import styles from './Register.module.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Register = () => {
+const Register = (props) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navegar = useNavigate();
+    const registerHandler = (e) => {
+        e.preventDefault();
+
+        axios
+        .post(
+          "http://localhost:8080/api/register/user",
+          {
+            firstName,
+            lastName,
+            email,
+            password
+          },
+          {
+            headers: {
+              'Content-type': 'application/json',
+            },
+          }
+        )
+        .then((data) => {
+            console.log(data);
+            localStorage.setItem("token", data.token);
+            props.setLogged(true);
+            navegar("/");
+        })
+        .catch((err) => console.log(err));
+ 
+    }
     return (
         <div className={styles.registerContainer}>
             <div className={styles.registerBox}>
-                <form>
+                <form onSubmit={registerHandler}>
                     <div className={styles.logoBox}>
                         <img src={Logo} alt="logoEvent" />
                     </div>
