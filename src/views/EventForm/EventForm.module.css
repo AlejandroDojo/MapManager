@@ -20,8 +20,12 @@
   padding: 0;
 }
 
-input {
-  cursor: pointer;
+input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
+  cursor: text; /* Default cursor for text inputs */
+}
+
+input[type="checkbox"], input[type="file"] {
+  cursor: pointer; /* Pointer cursor for clickable inputs */
 }
 
 .formContainer {
@@ -30,6 +34,7 @@ input {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  border-radius: 10px; /* Added border-radius for smoother appearance */
 }
 
 .primerFormContainer, .secondFormContainer {
@@ -212,3 +217,4 @@ input {
   color: #2980B9;
   font-size: 16px;
 }
+

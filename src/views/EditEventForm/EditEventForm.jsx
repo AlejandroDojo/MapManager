@@ -3,7 +3,9 @@ import MapPicker from "../../components/MapPicker/MapPicker";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import styles from "../EventForm/EventForm.module.css";
-import {format} from 'date-fns'
+import { format } from "date-fns";
+import imageIcon from "../../assets/imageIcon.png";
+import { useNavigate } from "react-router-dom";
 
 const EditEventForm = ({ customIcon }) => {
   const [location, setLocation] = useState(null);
@@ -18,6 +20,7 @@ const EditEventForm = ({ customIcon }) => {
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
   const [fileName, setFileName] = useState("Ninguna imagen seleccionada");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -56,7 +59,6 @@ const EditEventForm = ({ customIcon }) => {
     setFileName(file ? file.name : "");
   };
 
-
   const handleEditEventForm = (e) => {
     e.preventDefault();
     axios.put(
@@ -77,6 +79,7 @@ const EditEventForm = ({ customIcon }) => {
         },
       }
     );
+    navigate(`/evento/${id}`)
   };
 
   if (!loaded) {
@@ -184,18 +187,28 @@ const EditEventForm = ({ customIcon }) => {
           </div>
           <div className={styles.inputContainer}>
             <label className={styles.inputTitle}>Imagen seleccionada</label>
-            <img className={styles.imagePicked} src={evento.imageUrl} alt={evento.name} />
-          </div>
-          <div className={styles.customFileInput}>
-            <label htmlFor="subirImg" className={styles.customFileInputLabel}>
-              Subir imagen
-            </label>
-            <input
-              type="file"
-              id="subirImg"
-              onChange={(e) => handleFileChange(e)}
-              required
+            <img
+              className={styles.imagePicked}
+              src={evento.imageUrl}
+              alt={evento.name}
             />
+          <div className={styles.customFileInput}>
+              <input
+                type="file"
+                id="subirImg"
+                onChange={(e) => handleFileChange(e)}
+                
+                />
+              <div className={styles.customFileInputLabel}>
+                <img
+                  className={styles.imageIcon}
+                  src={imageIcon}
+                  alt={imageIcon}
+                  width={32}
+                  />
+                <label htmlFor="subirImg">Seleccionar archivo</label>
+              </div>
+            </div>
           {fileName && <span className={styles.fileName}>{fileName}</span>}
           </div>
         </div>
@@ -205,7 +218,9 @@ const EditEventForm = ({ customIcon }) => {
               <label className={styles.inputTitle}>
                 Fecha y hora de inicio
               </label>
-              <p className={styles.datePicked}>{format(evento.startDate, "HH:mm | dd MMM yyyy")} fecha anterior</p>
+              <p className={styles.datePicked}>
+                {format(evento.startDate, "HH:mm | dd MMM yyyy")} fecha anterior
+              </p>
               <input
                 className={styles.dateInput}
                 type="datetime-local"
@@ -217,7 +232,9 @@ const EditEventForm = ({ customIcon }) => {
               <label className={styles.inputTitle}>
                 Fecha y hora de finalizacion
               </label>
-              <p className={styles.datePicked}>{format(evento.endDate, "HH:mm | dd MMM yyyy")} fecha anterior</p>
+              <p className={styles.datePicked}>
+                {format(evento.endDate, "HH:mm | dd MMM yyyy")} fecha anterior
+              </p>
               <input
                 className={styles.dateInput}
                 type="datetime-local"
@@ -236,10 +253,10 @@ const EditEventForm = ({ customIcon }) => {
               inicialPosition={location}
               noRedirect={true}
             />
-            
+            {location===null?<p className={styles.locationError}>La ubicacion es necesaria</p>:""}
           </div>
         </div>
-        <div style={{"bottom":"0"}} className={styles.buttonContainer}>
+        <div className={styles.buttonContainer}>
           <button type="submit" className={styles.button}>
             Guardar cambios
           </button>

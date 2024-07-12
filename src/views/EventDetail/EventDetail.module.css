@@ -1,62 +1,223 @@
-.container{
-  background: #373B44;  
-  background: -webkit-linear-gradient(to bottom, #4286f4, #373B44);  
-  background: linear-gradient(to bottom, #4286f4, #373B44); 
-  padding: 5px;
-  
-  height: 100%;
-}
-
-.containerDetail{
-    width: 70%;
-    height: 45vh;
-    margin: 0px auto;
-    margin-bottom: 20px;
-    padding: 5px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.imgEjemplo{
+.container {
   width: 100%;
-  max-width: 800px;
-  height: auto;
-  height: 400px;
-  object-fit: cover;
-  padding: 0;
-  
+  height: 100%;
+  background: #2980B9; 
+  background: -webkit-linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9); 
+  background: linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9);
+  padding: 20px 0;
 }
 
-.containerDetailImg{
-  flex: 1;
-  width: 800px;
-  min-height: 200px;
-  padding: 2px;
-}
-
-.containerDetailInfo{
-  flex: 1;
+.containerDetail {
+  width: 70%;
+  margin: 0 auto;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 
-
-.mapContainer{
-  width: 70%;
-  margin: 0 auto;
+.containerDetailImg {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
-.typeContainer{
+.imgEjemplo {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: cover;
+  display: block;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.containerDetailInfo {
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(3, 2, 49, 0.8);
+  border: 2px solid #1872ae;
+  border-radius: 10px;
   display: flex;
-  gap: 25px;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-.typeContainer > ul {
-  list-style-type: circle;
+.mapContainer {
+  width: 70%;
+  margin: 20px auto 0;
+}
 
+.eventNameTitle {
+  font-size: 36px;
+  font-weight: 900;
+  color: #ffcc00;
+  text-align: center;
+}
+
+.typeContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.typeContainer h4 {
+  font-size: 24px;
+  color: #ffcc00;
+  margin: 0;
+}
+
+.typeContainer ul {
+  list-style-type: square;
+  margin: 0;
+  padding: 0;
+  font-size: 18px;
+  color: whitesmoke;
+  text-align: center;
+}
+
+.containerDetailInfo p {
+  font-size: 18px;
+  color: whitesmoke;
+  margin: 5px 0;
+  text-align: center;
+}
+
+.dateInfo {
+  font-weight: bold;
+  color: #2980B9;
+  background-color: #bf9900;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.priceInfo {
+  font-size: 20px;
+  color: #bf9900;
+  background-color: rgba(3, 2, 49, 0.6);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .containerDetail {
+    width: 80%;
+  }
+  .mapContainer {
+    width: 80%;
+  }
+}
+
+@media (max-width: 992px) {
+  .eventNameTitle {
+    font-size: 32px;
+  }
+  .typeContainer h4 {
+    font-size: 22px;
+  }
+  .typeContainer ul, .containerDetailInfo p, .dateInfo, .priceInfo {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .containerDetail {
+    width: 90%;
+  }
+  .mapContainer {
+    width: 90%;
+  }
+  .eventNameTitle {
+    font-size: 28px;
+  }
+  .typeContainer h4 {
+    font-size: 20px;
+  }
+  .typeContainer ul, .containerDetailInfo p, .dateInfo, .priceInfo {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .eventNameTitle {
+    font-size: 24px;
+  }
+  .typeContainer h4 {
+    font-size: 18px;
+  }
+  .typeContainer ul, .containerDetailInfo p, .dateInfo, .priceInfo {
+    font-size: 12px;
+  }
+  .mapContainer {
+    width: 100%;
+  }
+}
+
+
+.button {
+  text-decoration: none;
+  position: relative;
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  color: #fff;
+  width: 9em;
+  height: 2.5em;
+  line-height: 2em;
+  text-align: center;
+  background: linear-gradient(90deg, #00aeff, #ffe100, #954a00, #00aeff);
+  background-size: 300%;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.button:hover {
+  animation: ani 8s linear infinite;
+  border: none;
+}
+
+@keyframes ani {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 400%;
+  }
+}
+
+.button:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #00aeff, #ffe100, #954a00, #00aeff);
+  background-size: 400%;
+  border-radius: 35px;
+  transition: 1s;
+}
+
+.button:hover::before {
+  filter: blur(20px);
+}
+
+.button:active {
+  background: linear-gradient(90deg, #00aeff, #ffe100, #954a00, #00aeff);
+}
+
+.titleEvent{
+  font-size: 44px;
+  font-weight: bold;
+  color: white;
 }
