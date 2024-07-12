@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.homePageContainer {
+    width: 100%;
+    height: 700px;
+    background-image: url('../../assets/fondoHomePage.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.titleHomePage {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 50px;
+    font-size: 50px;
+}
+
+.subTitleHomePage {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    margin-top: 18px;
+    font-size: 30px;
+}
+
+.arrowIcon {
+    position: relative;
+    top: 100px;
+    padding: 0px;
+    margin: 0px auto;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.homeText {
+    padding: 200px;
+    text-align: center;
+    color: white;
+}
+
+.lineText {
+    margin: 0px auto;
+    height: 1.5px;
+    width: 700px;
+    background-color: white;
+}

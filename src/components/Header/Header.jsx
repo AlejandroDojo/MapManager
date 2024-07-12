@@ -11,8 +11,8 @@ const Header = ({logged}) => {
       {logged
       ? <>
           <header className={styles.header}>
-            <div>
-              <Link className={styles.link} to={'/'}>Home</Link>
+            <div className={styles.homeNav}>
+              <Link className={styles.linkHedear} to={'/'}>Home</Link>
             </div>
             <nav className={styles.headerNav}>
             <Link className={styles.link} to={'/nearbyevents'}>Eventos cercanos</Link>
@@ -29,7 +29,7 @@ const Header = ({logged}) => {
           <nav className={styles.headerNav}>
           <a href="/login" className={styles.headerNavInicio}>Iniciar Sesion</a>
           <a href="/register" className={styles.headerNavRegistrarse}>Registrarse</a>
-          <img src={UserLogo} alt="userLogo"  className={styles.headerLogo}/>
+          <img src={UserLogo} alt="userLogo"  className={styles.userLogo}/>
           </nav>
         </header>
           }

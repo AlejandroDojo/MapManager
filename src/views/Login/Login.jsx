@@ -41,7 +41,7 @@ const Login = (props) => {
             <div className={styles.loginBox}>
                 <form onSubmit={loginHandler}>
                 <div className={styles.logoBox}>
-                <img src={Logo} alt="logoEvent" />
+                <img className={styles.logoIcon} src={Logo} alt="logoEvent" />
                 </div>
                     <div className={styles.inputBox}>
                         <h3>INICIAR SESIÓN</h3>
