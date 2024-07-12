@@ -1,10 +1,12 @@
+import React from 'react'
 import Header from "../../components/Header/Header";
+import HomePage from '../HomePage/HomePage';
 
 const Display = () => {
     return (
         <>
             <Header logged={false} />
-            <h1>Página de presentación</h1>
+            <HomePage />
         </>
     )
 }

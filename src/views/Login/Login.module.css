@@ -12,7 +12,11 @@
     background-size: cover;
 }
 
-img {
+h3 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logoIcon {
     padding: 30px;
 }
 
@@ -48,6 +52,7 @@ img {
 
 .inputGroup input[type="email"],
 .inputGroup input[type="password"] {
+    font-family: 'Montserrat', sans-serif;
     width: 325px;
     padding: 0.5rem;
     border: 1px solid #ccc;
@@ -61,8 +66,8 @@ img {
     color: rgba(255, 255, 255, 0.548);
 }
 
-
 .inputGroupRememberMe {
+    font-family: 'Montserrat', sans-serif;
     width: 100px;
     margin-top: 5px;
     margin-left: 30px;
@@ -73,6 +78,7 @@ img {
 }
 
 .button {
+    font-family: 'Montserrat', sans-serif;
     color: white;
     border: none;
     margin-left: 145px;

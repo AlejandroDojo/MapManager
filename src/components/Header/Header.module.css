@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .header {
-  height: 80px;
+  font-family: 'Montserrat', sans-serif;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   background: linear-gradient(#4f41a2, #395aa0);
@@ -7,21 +10,31 @@
   padding: 0px 20px;
 }
 a {
+  color: white;
   text-decoration: none;
 }
+
+.homeNav {
+  margin-left: 30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+}
+
 .headerNav {
   /* background-color: aqua; */
+  font-family: 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 18px;
 }
 .headerNavRegistrarse {
-  padding: 10px 40px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 8px 18px;
   background-color: white;
-  color: black;
+  color: #4f41a2;
   transition: background-color 0.4s, box-shadow 0.4s, color 0.4s;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 3px;
   font-size: 16px;
 }
 .headerNavRegistrarse:hover {
@@ -30,15 +43,24 @@ a {
   box-shadow: 3px 3px 5px #8783a3;
 }
 .headerLogo {
-  height: 125px;
+  height: 118px;
+  cursor: pointer;
+}
+
+.userLogo {
+  height: 100px;
   cursor: pointer;
 }
 
 .headerNavInicio {
+  font-family: 'Montserrat', sans-serif;
   color: white;
 }
 .link{
+  position: relative;
+  right: 30px;
+  margin-right: 8px;
+  font-family: 'Montserrat', sans-serif;
   color: white;
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 18px;;
 }

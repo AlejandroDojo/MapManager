@@ -1,177 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 .container {
-  width: 100vw;
-  height: 100vh;
-  background: #2980B9; 
-  background: -webkit-linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9); 
-  background: linear-gradient(to top, #a1e6ff, #6DD5FA, #2980B9);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/fondoForm.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .inputTitle {
-  color: white;
-  font-size: 26px;
+  font-family: 'Montserrat', sans-serif;
+  color: #8f8f8f;
   font-weight: 600;
   margin: 0;
   padding: 0;
 }
 
-.formContainer {
-  width: 900px;
-  margin: 0 auto;
-  position: relative;
+input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
+  cursor: text; /* Default cursor for text inputs */
 }
 
-.primerFormContainer {
+input[type="checkbox"], input[type="file"] {
+  cursor: pointer; /* Pointer cursor for clickable inputs */
+}
+
+.formContainer {
+  width: 800px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 10px; /* Added border-radius for smoother appearance */
+}
+
+.primerFormContainer, .secondFormContainer {
+  margin: 18px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 5px;
+  gap: 20px;
 }
 
 .checkboxContainer {
   display: flex;
   gap: 15px;
-  align-items: center;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.secondFormContainer {
+.datesContainer, .descriptionContainer {
   display: flex;
+  flex-direction: column;
   gap: 15px;
-  padding: 5px;
-}
-
-.datesContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-}
-
-.dateContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
 }
 
 .mapContainer {
-  width: 500px;
+  width: 100%;
   height: 300px;
-  max-height: 300px;
-}
-
-.descriptionContainer {
-  display: flex;
-  gap: 15px;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .displayFlex {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: white;
 }
 
 .labelStyle {
-  font-size: 22px;
-  color: white;
-  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  color: #8f8f8f;
 }
 
 .optional {
-  font-size: 18px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: #8f8f8f;
 }
 
 .inputFormStyle {
-  border: 2px solid transparent;
+  border: 1px solid #ccc;
   font-size: 16px;
-  width: 15em;
-  height: 2.5em;
-  padding-left: 0.8em;
-  outline: none;
-  overflow: hidden;
-  background-color: #F3F3F3;
-  border-radius: 10px;
-  transition: all 0.5s;
+  width: 100%;
+  height: 40px;
+  padding-left: 10px;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 .inputFormStyle:hover,
 .inputFormStyle:focus {
-  border: 2px solid #4a4aec;
-  box-shadow: 0px 0px 0px 7px rgba(74, 93, 236, 0.2);
-  background-color: white;
+  border-color: #2980B9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
 }
 
 .textAreaStyle {
   resize: none;
-  border: 2px solid transparent;
+  border: 1px solid #ccc;
   font-size: 16px;
-  width: 30em;
-  height: 6em;
-  padding-left: 0.4em;
-  outline: none;
-  overflow: hidden;
-  background-color: #F3F3F3;
-  border-radius: 10px;
-  transition: all 0.5s;
-  
-  
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 .textAreaStyle:hover,
 .textAreaStyle:focus {
-  border: 2px solid #4a4aec;
-  box-shadow: 0px 0px 0px 7px rgba(74, 93, 236, 0.2);
-  background-color: white;
+  border-color: #2980B9;
+  box-shadow: 0 0 5px rgba(41, 128, 185, 0.5);
 }
 
 .tituloPrincipal {
-  color: white;
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  bottom: 18px;
+  color: #395aa0;
   font-size: 34px;
   font-weight: bold;
-}
-.tituloPrincipalContainer {
   text-align: center;
 }
 
 .dateInput {
-  width: 300px;
-  height: 30px;
+  width: 100%;
+  height: 40px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .button {
-  border: 2px solid #3b8ee6;
-  background-color: #3b8ee6;
-  border-radius: 0.9em;
-  padding: 0.5em 1.2em 0.5em 1em;
-  transition: all ease-in-out 0.2s;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.button span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 3px;
+  padding: 10px 20px;
   color: #fff;
-  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(#4f41a2, #395aa0);
 }
 
 .button:hover {
-  background-color: #0256b2;
+  background: linear-gradient(#382c79, #395aa0);
 }
 
 .buttonContainer {
-  position: absolute;
-  bottom: 5px;
-  left: 100px;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 .inputContainer {
   display: flex;
   align-items: center;
-}
-
-.inputTitle {
-  margin-right: 10px;
+  gap: 10px;
 }
 
 .customFileInput {
@@ -186,36 +174,31 @@
   opacity: 0;
   right: 0;
   top: 0;
+  border-radius: 3px;
   cursor: pointer;
 }
 
 .customFileInputLabel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border: 2px solid #5900ff95;
-  color: white;
-  background-color: #5900ff69;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  background: linear-gradient(#4f41a2, #395aa0);
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
+  display: inline-block;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.imageIcon {
-  margin: 0;
-  padding: 0;
-}
-
 .customFileInputLabel:hover {
-  background-color: #0057b39f;
-  border-color: #0056b3;
+  background-color: #1a5980;
+  border-color: #1a5980;
 }
 
 .fileName {
-  font-size: 18px;
-  color: #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #8f8f8f;
   margin-left: 10px;
 }
 
@@ -224,112 +207,14 @@
 }
 
 .imagePicked {
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
 }
 
 .datePicked {
-  color: white;
+  color: #2980B9;
   font-size: 16px;
 }
 
-.locationError{
-  color: red;
-  font-weight: 500;
-  font-size: 18px;
-  letter-spacing: 2px;
-  text-align: center;
-  
-  
-}
-
-/* Media Queries for responsiveness */
-@media (max-width: 1024px) {
-  .formContainer {
-    width: 90%;
-  }
-
-  .mapContainer {
-    width: 100%;
-  }
-
-  .dateInput {
-    width: 100%;
-  }
-
-  .textAreaStyle {
-    width: 100%;
-  }
-
-  .buttonContainer{
-    position: inherit;
-    left: 35px;
-  }
-}
-
-@media (max-width: 768px) {
-  .secondFormContainer {
-    flex-direction: column;
-  }
-
-  .mapContainer {
-    width: 100%;
-    height: 200px;
-  }
-
-  .buttonContainer {
-    position: relative;
-    left: 0;
-    margin-top: 30px;
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .inputTitle {
-    font-size: 20px;
-  }
-
-  .labelStyle {
-    font-size: 18px;
-  }
-
-  .optional {
-    font-size: 14px;
-  }
-
-  .textAreaStyle {
-    width: 100%;
-  }
-
-  .inputFormStyle {
-    width: 100%;
-  }
-
-  .button {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .button span {
-    justify-content: center;
-  }
-
-  .customFileInputLabel {
-    padding: 10px;
-  }
-
-  .dateInput {
-    width: 100%;
-  }
-
-  .mapContainer {
-    height: 150px;
-  }
-
-  .formContainer {
-    width: 100%;
-    padding: 10px;
-  }
-}
