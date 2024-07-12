@@ -6,20 +6,24 @@ import styles from "../EventForm/EventForm.module.css";
 import { format } from "date-fns";
 import imageIcon from "../../assets/imageIcon.png";
 import { useNavigate } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 const EditEventForm = ({ customIcon }) => {
-  const [location, setLocation] = useState(null);
-  const [name, setName] = useState("");
-  const [type, setType] = useState([]);
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState(Date.now);
-  const [endDate, setEndDate] = useState(Date.now);
-  const [imagen, setImagen] = useState(null);
-  const [price, setPrice] = useState("");
+  const {
+    location, setLocation,
+    name, setName,
+    type, setType,
+    description, setDescription,
+    startDate, setStartDate,
+    endDate, setEndDate,
+    imagen, setImagen,
+    price, setPrice,
+    fileName, setFileName
+  } = useForm();
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
-  const [fileName, setFileName] = useState("Ninguna imagen seleccionada");
+  
   const navigate = useNavigate();
 
   useEffect(() => {
