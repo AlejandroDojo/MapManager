@@ -24,7 +24,10 @@ const MyEvents = () => {
       .catch(err => console.log(err))
   
     
-  }, [])
+  }, [events])
+
+  
+  
 
 
   const deleteEvent = (eventId) => {
