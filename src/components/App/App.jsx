@@ -18,12 +18,18 @@ import MyEvents from '../../views/MyEvents/MyEvents'
 import EditEventForm from '../../views/EditEventForm/EditEventForm'
 import FCallendar from '../../views/Calendar/Calendar'
 import dayjs from 'dayjs'
+import axios from 'axios'
 
 
 function App() {
+  const token = localStorage.getItem('token');
   const [eventos, setEventos] = useState(eventosPrueba);
   const [logged, setLogged] = useState(false);
   const [misEventosAsisitir, setMisEventosAsistir] = useState([]);
+  const[email, setEmail]= useState("")
+
+  //cargando eventos
+
 
   
   //creando el icono del mapa
@@ -33,34 +39,70 @@ function App() {
     popupAnchor: [1, -20],
   })
 
-  const actualizarEventosAsistir=(evento)=>{
-    if(evento.startDate && evento.endDate){
-      let nuevoEvento={
-        start: dayjs(evento.startDate).toDate(),
-        end: dayjs(evento.endDate).toDate(),
-        title: evento.name
+  const guardarInformacion=(email)=>{
+    setEmail(email);
+  }
+  const actualizarEventosAsistir=(idEvento)=>{
+    axios
+    .get(`http://localhost:8080/api/getEvent/${idEvento}`)
+    .then(({data})=>{
+        console.log(data)
+        if(data.startDate && data.endDate){
+        let nuevoEvento={
+          start: dayjs(data.startDate).toDate(),
+          end: dayjs(data.endDate).toDate(),
+          title: data.name,
+          data: {
+            descripcion: data.description
+          }
+        }
+        let eventos=[...misEventosAsisitir, nuevoEvento]
+        
+        setMisEventosAsistir(eventos)
       }
-      let eventos=[...misEventosAsisitir, nuevoEvento]
-      
-      setMisEventosAsistir(eventos)
-    }
-    else if(evento.startDate && !evento.endDate){
-      let nuevoEvento={
-        start: dayjs(evento.startDate).toDate(),
-        end: dayjs(evento.startDate).add(24, 'hours').toDate(),
-        title: evento.name
+      else if(data.startDate && !data.endDate){
+        let nuevoEvento={
+          start: dayjs(data.startDate).toDate(),
+          end: dayjs(data.startDate).add(24, 'hours').toDate(),
+          title: data.name,
+          data: {
+            descripcion: data.description
+          }
+        }
+        let eventos=[...misEventosAsisitir, nuevoEvento]
+        
+        setMisEventosAsistir(eventos)
       }
-      let eventos=[...misEventosAsisitir, nuevoEvento]
-      
-      setMisEventosAsistir(eventos)
-    }
-    else{
-      console.log("El evento no tiene fecha de inicio")
-    }
+      else{
+        console.log("El evento no tiene fecha de inicio")
+      }
+      })
+    .catch((err)=>{console.log(err)})
 
   }
+  
 
+  const actualizarAsistirDb=(evento)=>{
+    axios
+    .put(
+      `http://localhost:8080/api/user/agregarEvent/${evento._id}`,
+      {
+        email
+      },
+      {
+        headers: {
+          'Content-type': 'application/json',
+          'token_usuario': localStorage.getItem('token')
+        },
+      }
+    )
+    .then(({data}) => {
+      actualizarEventosAsistir(data.assignedEvents)
 
+    })
+    .catch((err) => console.log(err));
+
+  }
   return (
     <div>
       
@@ -71,14 +113,14 @@ function App() {
           <Routes>
             <Route path='/' element={<Home eventos={eventos} customIcon={customIcon} logged={logged} setLogged={setLogged}/>}/>
             <Route path='/eventform' element={<EventForm customIcon={customIcon}/>}/>
-            <Route path='/evento/:id' element={<EventDetail eventos={eventos} customIcon={customIcon} añadirAsistencia={actualizarEventosAsistir}     />}/>
+            <Route path='/evento/:id' element={<EventDetail eventos={eventos} customIcon={customIcon} añadirAsistencia={actualizarAsistirDb}     />}/>
             <Route path='//nearbyevents' element={<NearbyEvents/>}/>
             <Route path='/myevents' element={<MyEvents/>}/>
             <Route path='/editevent/:id' element={<EditEventForm customIcon={customIcon}/>}/>
             <Route path='/myprofile' element={<MyProfile/>}/>
             <Route path='/register' element={<Register setLogged={setLogged}/>}/>
-            <Route path='/login' element={<Login setLogged={setLogged} logged={logged} />}/>
-            <Route path='/myCalendar' element={<FCallendar  eventos={misEventosAsisitir} />}/>
+            <Route path='/login' element={<Login setLogged={setLogged} logged={logged}  guardarInformacion={guardarInformacion} />}/>
+            <Route path='/myCalendar' element={<FCallendar  eventos={misEventosAsisitir}  email={email} />}/>
           </Routes>
       </BrowserRouter>
     </div>

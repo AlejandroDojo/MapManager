@@ -12,6 +12,7 @@ const Login = (props) => {
 
     const loginHandler = (e) => {
         e.preventDefault();
+        props.guardarInformacion(email)
 
         axios
         .post(
@@ -31,6 +32,7 @@ const Login = (props) => {
             localStorage.setItem("remember", localRemember);
             props.setLogged(true);
             navegar("/");
+
         })
         .catch((err) => console.log(err));
         

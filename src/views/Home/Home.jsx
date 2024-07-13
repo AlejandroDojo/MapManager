@@ -18,8 +18,7 @@ const Home = ({ customIcon, logged, setLogged }) => {
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     if ((remember === "true") && token) {
-      console.log("a'")
-      console.log(token)
+       console.log(token)
       axios
           .get(
             "http://localhost:8080/api/check",
