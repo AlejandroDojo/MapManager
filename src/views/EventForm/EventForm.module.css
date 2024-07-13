@@ -20,7 +20,11 @@
   padding: 0;
 }
 
-input {
+input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
+  cursor: text;
+}
+
+input[type="checkbox"], input[type="file"] {
   cursor: pointer;
 }
 
