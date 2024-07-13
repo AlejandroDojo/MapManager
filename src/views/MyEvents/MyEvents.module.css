@@ -20,6 +20,11 @@
   
 }
 
+.iconStyle {
+  padding: 0px;
+  height: 18px;
+}
+
 .imagesContainer{
   flex: 1;
   width: 300px;
@@ -71,7 +76,20 @@
   gap: 20px;
 }
 
+.containerButton {
+  width: 100px;
+  display: flex;
+  gap: 3px;
+}
+
+.boxText {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+}
+
 .editButton{
+  width: 100px;
+  height: 30px;
   margin-top: 18px;
   font-family: 'Montserrat', sans-serif;
   padding: 5px 15px;
@@ -90,6 +108,9 @@
 
 
 .deleteButton{
+  display: flex;
+  width: 120px;
+  height: 30px;
   margin-top: 18px;
   font-family: 'Montserrat', sans-serif;
   padding: 5px 15px;
