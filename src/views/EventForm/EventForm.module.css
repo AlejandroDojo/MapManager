@@ -21,11 +21,11 @@
 }
 
 input[type="text"], input[type="number"], input[type="datetime-local"], textarea {
-  cursor: text; /* Default cursor for text inputs */
+  cursor: text;
 }
 
 input[type="checkbox"], input[type="file"] {
-  cursor: pointer; /* Pointer cursor for clickable inputs */
+  cursor: pointer;
 }
 
 .formContainer {
@@ -34,7 +34,6 @@ input[type="checkbox"], input[type="file"] {
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  border-radius: 10px; /* Added border-radius for smoother appearance */
 }
 
 .primerFormContainer, .secondFormContainer {
@@ -186,9 +185,7 @@ input[type="checkbox"], input[type="file"] {
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  display: inline-block;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -218,10 +215,5 @@ input[type="checkbox"], input[type="file"] {
 .datePicked {
   color: #2980B9;
   font-size: 16px;
-}
-
-.imageIcon{
-  padding: 0;
-
 }
 

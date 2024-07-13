@@ -19,6 +19,7 @@ const Header = ({logged}) => {
             <Link className={styles.link} to={'/myCalendar'}>Mi Calendario</Link>
             <Link className={styles.link} to={'/myevents'}>Mis eventos</Link>
             <Link className={styles.link} to={'/eventform'}>Crear Evento</Link>
+            <img src={UserLogo} alt="userLogo"  className={styles.userLogo}/>
             </nav>
           </header>
         </>
