@@ -83,7 +83,7 @@ const EditEventForm = ({ customIcon }) => {
         },
       }
     );
-    navigate(`/evento/${id}`)
+    navigate(`/myevents`)
   };
 
   if (!loaded) {
@@ -210,7 +210,7 @@ const EditEventForm = ({ customIcon }) => {
                   alt={imageIcon}
                   width={32}
                   />
-                <label htmlFor="subirImg">Seleccionar archivo</label>
+                <label style={{marginRight: 100}} htmlFor="subirImg">Seleccionar archivo</label>
               </div>
             </div>
           {fileName && <span className={styles.fileName}>{fileName}</span>}
