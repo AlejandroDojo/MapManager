@@ -89,13 +89,13 @@ const MyEvents = () => {
                 <Link className={styles.editButton} to={`/editevent/${evento._id}`}>
                   <div className={styles.containerButton}>
                   <img className={styles.iconStyle} src={editIcon} alt={editIcon} />
-                  <span>Editar</span>
+                  <span className={styles.boxText} >Editar</span>
                   </div>
                   </Link>
                 <button className={styles.deleteButton} onClick={()=> handleDelete(evento._id)}>
                   <div className={styles.containerButton}>
                   <img className={styles.iconStyle} src={deleteIcon} alt={deleteIcon} />
-                  <span>Eliminar</span>
+                  <span className={styles.boxText} >Eliminar</span>
                   
                   </div>
                   </button>
