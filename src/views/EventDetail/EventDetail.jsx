@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { format } from "date-fns";
+import { format } from 'date-fns';
 import styles from "./EventDetail.module.css";
 import axios from "axios";
 import MapCard from "../../components/MapCard/MapCard";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 
-const EventDetail = ({ customIcon, añadirAsistencia }) => {
+
+const EventDetail = ({customIcon, añadirAsistencia}) => {
+
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
@@ -21,10 +23,13 @@ const EventDetail = ({ customIcon, añadirAsistencia }) => {
       .catch((err) => console.log(err));
   }, [id]);
 
-  const actualizarCalendario = () => {
-    añadirAsistencia(evento);
-    alert(`Se te ha añadido al evento con id: ${evento._id}`);
-  };
+
+  const actualizarCalendario=()=>{
+    //llamar a la funcion y enviarle el id del evento para añadir al calendario 
+    añadirAsistencia(evento)
+    alert(`se te ha añadido al evento con id: ${evento._id}`)
+  }
+  
 
   if (!loaded) {
     return <div>Cargando...</div>;
@@ -41,33 +46,30 @@ const EventDetail = ({ customIcon, añadirAsistencia }) => {
           />
         </div>
         <div className={styles.containerDetailInfo}>
-          <h3>Nombre del evento: {evento.name}</h3>
+          <h3 className={styles.eventNameTitle}>Nombre del evento: <span className={styles.titleEvent}>{evento.name}</span></h3>
           <div className={styles.typeContainer}>
-            <h4>Tipo:</h4>
+            <div>
+              <h4>Tipo:</h4>
+            </div>
             <ul>
               {evento.type.map((type, index) => (
                 <li key={index}>{type}</li>
               ))}
             </ul>
           </div>
-          <p>Descripción: {evento.description}</p>
-          {evento.startDate && (
-            <p>Fecha de inicio: {format(new Date(evento.startDate), "HH:mm | dd MMM yyyy")}</p>
-          )}
-          {evento.endDate && (
-            <p>Fecha de fin: {format(new Date(evento.endDate), "HH:mm | dd MMM yyyy")}</p>
-          )}
-          {evento.price && <p>Precio: {evento.price}</p>}
-          {evento.startDate && (
-            <button onClick={actualizarCalendario}>Asistir al evento</button>
-          )}
+          <p>Descripcion: {evento.description}</p>
+        {!evento.startDate ? "" : <p className={styles.dateInfo}>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.endDate ? "" : <p className={styles.dateInfo}>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.price ? "" : <p className={styles.priceInfo}>Precio: {evento.price}</p>}
+        <button className={styles.button}  onClick={actualizarCalendario}  >Asistir al evento</button>
         </div>
+
       </div>
       <div className={styles.mapContainer}>
         <MapContainer
           center={[evento.location[0], evento.location[1]]}
           zoom={15}
-          style={{ height: "100%", width: "100%" }}
+          style={{ height: "400px", width: "100%" }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -84,7 +86,11 @@ const EventDetail = ({ customIcon, añadirAsistencia }) => {
                 imageUrl={evento.imageUrl}
               />
             </Popup>
-            <Tooltip direction="top" offset={[1, -20]} opacity={0.8}>
+            <Tooltip
+              direction="top"
+              offset={[1, -20]}
+              opacity={0.8}
+            >
               {evento.name}
             </Tooltip>
           </Marker>
