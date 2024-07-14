@@ -9,7 +9,7 @@ const NearbyEvents = () => {
   const [loading, setLoading] = useState(false)  
 
   useEffect(() => {
-    const maxDistance = 5;
+    const maxDistance = 30;
     navigator.geolocation.getCurrentPosition(position => {
       setCoordActu([position.coords.latitude,position.coords.longitude])
   }, e => {
