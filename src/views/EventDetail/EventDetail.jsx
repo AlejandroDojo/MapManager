@@ -47,7 +47,7 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
           />
         </div>
         <div className={styles.containerDetailInfo}>
-          <h3 className={styles.eventNameTitle}>Nombre del evento: <span>{evento.name}</span></h3>
+          <h3 className={styles.eventNameTitle}>Nombre del evento: <span className={styles.titleEvent}>{evento.name}</span></h3>
           <div className={styles.typeContainer}>
             <div>
               <h4>Tipo:</h4>
@@ -59,10 +59,10 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
             </ul>
           </div>
           <p>Descripcion: {evento.description}</p>
-        {!evento.startDate ? "" : <p>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.endDate ? "" : <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
-        {!evento.price ? "" : <p>Precio: {evento.price}</p>}
-        {!evento.startDate ? "" : <button  onClick={actualizarCalendario}  >Asisitir al evento</button> }
+        {!evento.startDate ? "" : <p className={styles.dateInfo}>Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.endDate ? "" : <p className={styles.dateInfo}>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>}
+        {!evento.price ? "" : <p className={styles.priceInfo}>Precio: {evento.price}</p>}
+        <button className={styles.button}  onClick={actualizarCalendario}  >Asistir al evento</button>
         </div>
 
         <p>Descripcion: {evento.description}</p>

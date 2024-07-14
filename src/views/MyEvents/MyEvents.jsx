@@ -16,19 +16,44 @@ const MyEvents = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/getEvents')
-      .then((res)=> {
-        setEvents(res.data)
-        setLoading(true)}
-      )
-      .catch(err => console.log(err))
+    const token = localStorage.getItem('token');
+    axios.get(`http://localhost:8080/api/user/unique/${token}`, {
+      token
+    })
+    .then((myEvents) => {
+      const eventosId = myEvents.data;
+
+      Promise.all(eventosId.map((id) => {
+        return axios.get(`http://localhost:8080/api/getEvent/${id[0]}`)
+          .then((evento) => evento.data)
+          .catch(err => {
+            console.log(err);
+            return null; 
+          });
+      }))
+      .then((eventos) => {
+        const filteredEventos = eventos.filter(evento => evento !== null);
+        setEvents(filteredEventos);
+        setLoading(true);
+      })
+      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+  }, []);
+
   
-    
-  }, [])
+
+  
+  
 
 
   const deleteEvent = (eventId) => {
-    axios.delete(`http://localhost:8080/api/delete/${eventId}`)
+    const token = localStorage.getItem('token')
+    axios.delete(`http://localhost:8080/api/delete/${eventId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(()=> {
         console.log("Eliminado correctamente")
         const filterEvents = events.filter((evento)=>evento._id!==eventId)
@@ -86,13 +111,13 @@ const MyEvents = () => {
                 <Link className={styles.editButton} to={`/editevent/${evento._id}`}>
                   <div className={styles.containerButton}>
                   <img className={styles.iconStyle} src={editIcon} alt={editIcon} />
-                  <span>Editar</span>
+                  <span className={styles.boxText} >Editar</span>
                   </div>
                   </Link>
                 <button className={styles.deleteButton} onClick={()=> handleDelete(evento._id)}>
                   <div className={styles.containerButton}>
                   <img className={styles.iconStyle} src={deleteIcon} alt={deleteIcon} />
-                  <span>Eliminar</span>
+                  <span className={styles.boxText} >Eliminar</span>
                   
                   </div>
                   </button>

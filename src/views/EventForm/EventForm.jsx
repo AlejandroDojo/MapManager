@@ -3,17 +3,23 @@ import MapPicker from "../../components/MapPicker/MapPicker";
 import axios from "axios";
 import styles from "./EventForm.module.css";
 import imageIcon from "../../assets/imageIcon.png";
+import { useNavigate } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 const EventForm = ({ customIcon }) => {
-  const [location, setLocation] = useState(null);
-  const [name, setName] = useState("");
-  const [type, setType] = useState([]);
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState(Date.now);
-  const [endDate, setEndDate] = useState(Date.now);
-  const [imagen, setImagen] = useState(null);
-  const [price, setPrice] = useState("");
-  const [fileName, setFileName] = useState("Ninguna imagen seleccionada");
+  const {
+    location, setLocation,
+    name, setName,
+    type, setType,
+    description, setDescription,
+    startDate, setStartDate,
+    endDate, setEndDate,
+    imagen, setImagen,
+    price, setPrice,
+    fileName, setFileName
+  } = useForm();
+  const navigate = useNavigate();
+  
 
   const handleLocationSelect = (latlng) => {
     setLocation([latlng.lat, latlng.lng]);
@@ -36,7 +42,9 @@ const EventForm = ({ customIcon }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios
+
+    if(location!==null){
+      axios
       .post(
         "http://localhost:8080/api/upload",
         {
@@ -56,9 +64,23 @@ const EventForm = ({ customIcon }) => {
         }
       )
       .then((data) => {
-        console.log(data);
+        const id = data.data;
+        const token = localStorage.getItem('token');
+        axios.post(`http://localhost:8080/api/user/create/${id}`,{
+          token
+        })
+        .then(()=>{
+          navigate('/')
+        })
+        
+        
+        
       })
       .catch((err) => console.log(err));
+        
+
+    } 
+  
   };
 
   return (
@@ -210,6 +232,7 @@ const EventForm = ({ customIcon }) => {
               inicialPosition={null}
               noRedirect={false}
             />
+            {location===null?<p className={styles.locationError}>La ubicacion es necesaria</p>:""}
             
           </div>
         </div>

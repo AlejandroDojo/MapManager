@@ -5,20 +5,26 @@ import { useParams } from "react-router-dom";
 import styles from "../EventForm/EventForm.module.css";
 import { format } from "date-fns";
 import imageIcon from "../../assets/imageIcon.png";
+import { useNavigate } from "react-router-dom";
+import useForm from "../../hooks/useForm";
 
 const EditEventForm = ({ customIcon }) => {
-  const [location, setLocation] = useState(null);
-  const [name, setName] = useState("");
-  const [type, setType] = useState([]);
-  const [description, setDescription] = useState("");
-  const [startDate, setStartDate] = useState(Date.now);
-  const [endDate, setEndDate] = useState(Date.now);
-  const [imagen, setImagen] = useState(null);
-  const [price, setPrice] = useState("");
+  const {
+    location, setLocation,
+    name, setName,
+    type, setType,
+    description, setDescription,
+    startDate, setStartDate,
+    endDate, setEndDate,
+    imagen, setImagen,
+    price, setPrice,
+    fileName, setFileName
+  } = useForm();
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
-  const [fileName, setFileName] = useState("Ninguna imagen seleccionada");
+  
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -77,6 +83,7 @@ const EditEventForm = ({ customIcon }) => {
         },
       }
     );
+    navigate(`/myevents`)
   };
 
   if (!loaded) {
@@ -194,7 +201,7 @@ const EditEventForm = ({ customIcon }) => {
                 type="file"
                 id="subirImg"
                 onChange={(e) => handleFileChange(e)}
-                required
+                
                 />
               <div className={styles.customFileInputLabel}>
                 <img
@@ -203,7 +210,7 @@ const EditEventForm = ({ customIcon }) => {
                   alt={imageIcon}
                   width={32}
                   />
-                <label htmlFor="subirImg">Seleccionar archivo</label>
+                <label style={{marginRight: 100}} htmlFor="subirImg">Seleccionar archivo</label>
               </div>
             </div>
           {fileName && <span className={styles.fileName}>{fileName}</span>}
@@ -250,6 +257,7 @@ const EditEventForm = ({ customIcon }) => {
               inicialPosition={location}
               noRedirect={true}
             />
+            {location===null?<p className={styles.locationError}>La ubicacion es necesaria</p>:""}
           </div>
         </div>
         <div className={styles.buttonContainer}>
