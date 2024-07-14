@@ -16,22 +16,44 @@ const MyEvents = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/getEvents')
-      .then((res)=> {
-        setEvents(res.data)
-        setLoading(true)}
-      )
-      .catch(err => console.log(err))
+    const token = localStorage.getItem('token');
+    axios.get(`http://localhost:8080/api/user/unique/${token}`, {
+      token
+    })
+    .then((myEvents) => {
+      const eventosId = myEvents.data;
+
+      Promise.all(eventosId.map((id) => {
+        return axios.get(`http://localhost:8080/api/getEvent/${id[0]}`)
+          .then((evento) => evento.data)
+          .catch(err => {
+            console.log(err);
+            return null; 
+          });
+      }))
+      .then((eventos) => {
+        const filteredEventos = eventos.filter(evento => evento !== null);
+        setEvents(filteredEventos);
+        setLoading(true);
+      })
+      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+  }, []);
+
   
-    
-  }, [events])
 
   
   
 
 
   const deleteEvent = (eventId) => {
-    axios.delete(`http://localhost:8080/api/delete/${eventId}`)
+    const token = localStorage.getItem('token')
+    axios.delete(`http://localhost:8080/api/delete/${eventId}`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(()=> {
         console.log("Eliminado correctamente")
         const filterEvents = events.filter((evento)=>evento._id!==eventId)
