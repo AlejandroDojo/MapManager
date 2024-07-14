@@ -89,7 +89,6 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
             : ""
         }
         </>}
-        
       </div>
       <div className={styles.mapContainer}>
         <MapContainer

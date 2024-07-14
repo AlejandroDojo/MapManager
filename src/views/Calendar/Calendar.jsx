@@ -5,6 +5,7 @@ import  './Calendar.css'
 import "dayjs/locale/es"
 import { useEffect, useState } from "react";
 import axios from "axios";
+import EventModal from "../EventModal/EventModal";
 
 
 const FCallendar=({eventos, email})=>{
@@ -13,7 +14,7 @@ const FCallendar=({eventos, email})=>{
     let eventosAMostrar=[];
 
     const handleEventClick=(evento)=>{
-        // setEventoSeleccionado(evento)
+        setEventoSeleccionado(evento)
         console.log(evento)
     }
 
@@ -22,43 +23,68 @@ const FCallendar=({eventos, email})=>{
     }
 
     useEffect(()=>{
-        axios
-        .get(`http://localhost:8080/api/user/unique/${email}`)
-        .then(({data})=>{
-            if(data.assignedEvents){
-                data.assignedEvents.map((idDeEvento)=>{
-                    axios
-                    .get(`http://localhost:8080/api/getEvent/${idDeEvento}`)
-                    .then(({data})=>{
-                        
-                        let nuevoEvento={
+        const fetchEventos = async () => {
+            try {
+                const { data } = await axios.get(`http://localhost:8080/api/user/unique/${email}`);
+                if (data.assignedEvents) {
+                    const eventosPromises = data.assignedEvents.map(async (idDeEvento) => {
+                        const { data } = await axios.get(`http://localhost:8080/api/getEvent/${idDeEvento}`);
+                        return {
                             start: dayjs(data.startDate).toDate(),
                             end: dayjs(data.endDate).toDate(),
                             title: data.name,
                             data: {
-                              descripcion: data.description
+                                descripcion: data.description
                             }
-                        
-                        }
-                        eventosAMostrar.push(nuevoEvento)
-                        //   let eventos=[...eventosUsuario, nuevoEvento]
-                        //   setEventosUsuario(eventos)
-                        
-                    })
-                    
-                })
-                console.log(eventosAMostrar)
-            
-            
+                        };
+                    });
+                    const eventos = await Promise.all(eventosPromises);
+                    setEventosUsuario(eventos);
+                } else {
+                    console.log("Aun no ha indicado asistir a algún evento");
+                }
+            } catch (err) {
+                console.log(err);
             }
-            else{
-                console.log("Aun no ha indicado asistir a algun evento")
-            }
-        })
-        .catch((err)=>console.log(err))
-    })
+        };
 
-    console.log(eventosAMostrar)
+        fetchEventos();
+    }, [email]); // Dependencia para que se ejecute solo cuando cambie el email
+        // axios
+        // .get(`http://localhost:8080/api/user/unique/${email}`)
+        // .then(({data})=>{
+        //     if(data.assignedEvents){
+        //         data.assignedEvents.map((idDeEvento)=>{
+        //             axios
+        //             .get(`http://localhost:8080/api/getEvent/${idDeEvento}`)
+        //             .then(({data})=>{
+                        
+        //                 let nuevoEvento={
+        //                     start: dayjs(data.startDate).toDate(),
+        //                     end: dayjs(data.endDate).toDate(),
+        //                     title: data.name,
+        //                     data: {
+        //                       descripcion: data.description
+        //                     }
+                        
+        //                 }
+        //                 eventosAMostrar.push(nuevoEvento)
+        //                 //   let eventos=[...eventosUsuario, nuevoEvento]
+        //                 //   setEventosUsuario(eventos)
+                        
+        //             })
+                    
+        //         })
+        //         console.log(eventosAMostrar)
+            
+            
+        //     }
+        //     else{
+        //         console.log("Aun no ha indicado asistir a algun evento")
+        //     }
+        // })
+        // .catch((err)=>console.log(err))
+    //})
     dayjs.locale("es");
     const localizer= dayjsLocalizer(dayjs)
     return(
@@ -68,7 +94,7 @@ const FCallendar=({eventos, email})=>{
         <div className="calendarContainer">
         <Calendar 
             localizer={localizer}
-            events={eventosAMostrar}
+            events={eventosUsuario}
             views={["month", "week", "day"]}
             messages={{
                 next: "Siguiente",
@@ -81,6 +107,12 @@ const FCallendar=({eventos, email})=>{
             onSelectEvent={handleEventClick}
 
         /> 
+        {eventoSeleccionado && (
+            <EventModal 
+            evento={eventoSeleccionado}
+            onClose={handleEventClose}
+            />
+        )}
         </div>
         {/* } */}
         </div>
