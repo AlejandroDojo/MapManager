@@ -49,7 +49,7 @@ function App() {
             <Route path='/' element={<Home eventos={eventos} customIcon={customIcon} logged={logged} setLogged={setLogged}/>}/>
             <Route path='/eventform' element={<EventForm customIcon={customIcon}/>}/>
             <Route path='/evento/:id' element={<EventDetail eventos={eventos} customIcon={customIcon} />}/>
-            <Route path='//nearbyevents' element={<NearbyEvents/>}/>
+            <Route path='//nearbyevents' element={<NearbyEvents customIcon={customIcon}/>}/>
             <Route path='/myevents' element={<MyEvents/>}/>
             <Route path='/editevent/:id' element={<EditEventForm customIcon={customIcon}/>}/>
             <Route path='/myprofile' element={<MyProfile/>}/>
