@@ -9,7 +9,7 @@ import Loader from "../../components/Loader/Loader";
 
 
 const MyEvents = () => {
-  const [events, setEvents] = useState({})
+  const [events, setEvents] = useState(null)
   const [loading, setLoading] = useState(false)
   const [isOpen, setIsOpen] = useState(false);
   const [eventIdToDelete, setEventIdToDelete] = useState(null);
@@ -17,8 +17,10 @@ const MyEvents = () => {
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-    axios.get(`http://localhost:8080/api/user/unique/${token}`, {
-      token
+    axios.get('http://localhost:8080/api/userEvents',{
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
     })
     .then((myEvents) => {
       const eventosId = myEvents.data;
@@ -38,7 +40,9 @@ const MyEvents = () => {
       })
       .catch(err => console.log(err));
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      console.log('que error de mierda')
+      console.log(err)});
   }, []);
 
   
@@ -75,6 +79,16 @@ const MyEvents = () => {
       setIsOpen(false);
     }
   };
+
+
+
+  if(events===null){
+    return (
+      <div className={styles.notEvent}>
+        No hay eventos
+      </div>
+    )
+  }
 
 
 
