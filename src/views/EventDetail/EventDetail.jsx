@@ -7,14 +7,16 @@ import MapCard from "../../components/MapCard/MapCard";
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 
 
-const EventDetail = ({customIcon, añadirAsistencia}) => {
+const EventDetail = ({customIcon}) => {
 
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
   const [showModal, setShowModal]= useState(false)
 
+  
   useEffect(() => {
+    
     axios
       .get(`http://localhost:8080/api/getEvent/${id}`)
       .then((res) => {
@@ -27,7 +29,23 @@ const EventDetail = ({customIcon, añadirAsistencia}) => {
 
   const actualizarCalendario=()=>{
     //llamar a la funcion y enviarle el id del evento para añadir al calendario 
-    añadirAsistencia(evento)
+    {
+      axios
+      .put(
+        `http://localhost:8080/api/user/agregarEvent/${evento._id}`,
+        {
+          headers: {
+            'Content-type': 'application/json',
+            'token_usuario': localStorage.getItem('token')
+          },
+        }
+      )
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  
+    }
     setShowModal(true)
   }
   

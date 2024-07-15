@@ -7,12 +7,10 @@ import { useNavigate } from "react-router-dom";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [localRemember, setLocalRemember] = useState(false);
   const navegar = useNavigate();
 
   const loginHandler = (e) => {
     e.preventDefault();
-        props.guardarInformacion(email)
 
     axios
       .post(
@@ -29,9 +27,7 @@ const Login = (props) => {
       )
       .then(({ data }) => {
         
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("remember", localRemember);
-        
+        localStorage.setItem("token", data.token);  
         props.setLogged(true);
         navegar("/");
       })
@@ -66,15 +62,6 @@ const Login = (props) => {
                 required
               />
             </div>
-          </div>
-          <div className={styles.inputGroupRememberMe}>
-            <input
-              type="checkbox"
-              id="remember"
-              checked={localRemember}
-              onChange={(e) => setLocalRemember(e.target.checked)}
-            />
-            <label htmlFor="remember">Recordar</label>
           </div>
           <button className={styles.button} type="submit">
             Iniciar
