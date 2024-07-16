@@ -203,13 +203,7 @@ const EditEventForm = ({ customIcon }) => {
                 onChange={(e) => handleFileChange(e)}
                 
                 />
-              <div className={styles.customFileInputLabel}>
-                <img
-                  className={styles.imageIcon}
-                  src={imageIcon}
-                  alt={imageIcon}
-                  width={32}
-                  />
+              <div className={styles.customFileInputLabelEdit}>
                 <label style={{marginRight: 100}} htmlFor="subirImg">Seleccionar archivo</label>
               </div>
             </div>

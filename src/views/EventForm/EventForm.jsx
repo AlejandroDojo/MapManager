@@ -85,6 +85,8 @@ const EventForm = ({ customIcon }) => {
   
   };
 
+  
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.formContainer}>
