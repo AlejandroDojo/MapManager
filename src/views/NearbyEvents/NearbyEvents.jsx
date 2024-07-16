@@ -20,6 +20,7 @@ const NearbyEvents = ({ customIcon }) => {
   if (!loading) {
     return <Loader />;
   }
+  
 
   return (
     <>

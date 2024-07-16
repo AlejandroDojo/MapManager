@@ -27,11 +27,14 @@ const useGetNearbyEvents = () => {
           res.data,
           maxDistance
         );
-        setNearbyEvents(filteredEvents);
+        const filteredEvents2 = filteredEvents.filter(
+          (event) => Date.parse(event.endDate) > Date.now()
+        );
+        setNearbyEvents(filteredEvents2);
         setLoading(true);
       })
       .catch((err) => console.log(err));
-  }, [nearbyEvents, maxDistance]);
+  }, [ maxDistance]);
 
   function haversineDistance(coords1, coords2) {
     const [lat1, lon1] = coords1;
