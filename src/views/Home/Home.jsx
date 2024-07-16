@@ -10,37 +10,10 @@ import axios from 'axios'
 import Display from "../Display/Display";
 
 const Home = ({ customIcon, logged, setLogged }) => {
-  const token = localStorage.getItem('token');
-  const remember = localStorage.getItem('remember');
-  const navegar = useNavigate();
   const [mostrarInfo, setMostrarInfo] = useState(false);
   const [events, setEvents] = useState({})
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    if ((remember === "true") && token) {
-       console.log(token)
-      axios
-          .get(
-            "http://localhost:8080/api/check",
-            {
-              headers: {
-                'Content-type': 'application/json',
-                'token_usuario': localStorage.getItem('token')
-              },
-            }
-          )
-          .then((info) => {
-              // falta notificacion
-              setLogged(true);
-          })
-          .catch((err) => {
-            console.log(err);
-            setLogged(false);
-            navegar('/login')
-            localStorage.removeItem('token');
-            localStorage.removeItem('remember');
-          });
-    }    
     axios.get('http://localhost:8080/api/getEvents')
                 .then((res)=> {
                   setEvents(res.data)

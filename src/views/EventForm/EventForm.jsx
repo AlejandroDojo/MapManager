@@ -66,8 +66,10 @@ const EventForm = ({ customIcon }) => {
       .then((data) => {
         const id = data.data;
         const token = localStorage.getItem('token');
-        axios.post(`http://localhost:8080/api/user/create/${id}`,{
-          token
+        axios.post(`http://localhost:8080/api/user/create/${id}`,data,{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
         })
         .then(()=>{
           navigate('/')

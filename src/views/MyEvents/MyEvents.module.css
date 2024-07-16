@@ -126,3 +126,11 @@
 .deleteButton:hover{
   background-color: #9b1e1e;
 }
+
+
+.notEvent{
+  font-size: 40px;
+  text-align: center;
+  font-weight: 700;
+  margin-top: 50px;
+}
