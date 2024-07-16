@@ -12,6 +12,7 @@ const EventDetail = ({customIcon}) => {
   const [evento, setEvento] = useState({});
   const [loaded, setLoaded] = useState(false);
   const { id } = useParams();
+  let token = localStorage.getItem('token')
   const [showModal, setShowModal]= useState(false)
 
   
@@ -32,11 +33,13 @@ const EventDetail = ({customIcon}) => {
     {
       axios
       .put(
-        `http://localhost:8080/api/user/agregarEvent/${evento._id}`,
+        `http://localhost:8080/api/user/agregarEvent/${id}`, {
+          token_usuario: token
+        },
+        
         {
           headers: {
             'Content-type': 'application/json',
-            'token_usuario': localStorage.getItem('token')
           },
         }
       )
