@@ -18,3 +18,59 @@
 .popup .leaflet-popup-content-wrapper .leaflet-popup-content{
   margin: 0 !important;
 }
+
+
+.Container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonAll{
+  padding: 10px 30px;
+  
+  border: none;
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.buttonAll:hover,
+.buttonSome:hover{
+  background-color: rgba(30, 30, 236, 0.331);
+}
+
+.buttonSome{
+  padding: 10px 30px;
+  border: none;
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.active{
+  color: white;
+  cursor: pointer;
+  background-color: rgba(26, 26, 206, 0.889);
+}
+
+.active:hover{
+  background-color: rgba(26, 26, 206, 0.889);
+
+
+}
+
+
+
+
+
+
+

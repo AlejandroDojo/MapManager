@@ -1,20 +1,31 @@
 import { MapContainer, Marker, Popup, TileLayer, Tooltip } from "react-leaflet";
 import MapGallery from "../../components/MapGallery/MapGallery";
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate, } from "react-router-dom";
+import { useEffect, useState, useRef } from "react";
 import styles from "./Home.module.css";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { DivIcon, point } from "leaflet";
+
 import MapCard from "../../components/MapCard/MapCard";
 import axios from "axios";
 import Display from "../Display/Display";
 import NearbyEvents from "../NearbyEvents/NearbyEvents";
 import AssignedEvents from "../../components/AssignedEvents/AssignedEvents";
+import Title from "../../components/Title/Title";
 
 const Home = ({ customIcon, logged, setLogged }) => {
+  const mapRef = useRef(null);
   const [mostrarInfo, setMostrarInfo] = useState(false);
   const [events, setEvents] = useState({});
   const [loading, setLoading] = useState(false);
+  const [setAll, setSetAll] = useState(true)
+  const [some, setSome] = useState(false)
+  const [eventClick, setEventClick] = useState(null)
+  
+  
+
+
+
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/getEvents")
@@ -48,12 +59,47 @@ const Home = ({ customIcon, logged, setLogged }) => {
   if (!loading) {
     return <div>Cargando...</div>;
   }
-  //HOME PINTADO
+  const scrollToSection = (ref,lat,lon) => {
+    
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+    setEventClick([lat,lon])
+    
+
+
+  };
+  
+
+  const handleNavClickAll = () =>{
+    if(setAll!==true){
+      setSetAll(true);
+      setSome(false)
+    } 
+    
+
+  }
+  const handleNavClickSome = () =>{
+    if(some!==true){
+      setSome(true)
+      setSetAll(false);
+    } 
+
+  }
+  
+
   return (
     <>
+    <div className={styles.Container}>
+      <Title text="Eventos"/>
+      <div className={styles.buttonsContainer}>
+        <button className={`${styles.buttonAll} ${setAll?styles.active:""}`} onClick={handleNavClickAll}>Todos</button>
+        <button className={`${styles.buttonSome} ${some?styles.active:""}`} onClick={handleNavClickSome}>Cercanos</button>
+      </div>
+    </div>
       <div>
-        <NearbyEvents />
-        <AssignedEvents />
+        {(setAll)?<Title text="Todos los eventos"/>:""}
+        {(setAll)?<MapGallery eventos={events} handleClick={scrollToSection} referencia={mapRef}/>:""}
+        {(some)?<NearbyEvents handleClick={scrollToSection} referencia={mapRef}/>:""}
+        <AssignedEvents handleClick={scrollToSection} referencia={mapRef}/>
       </div>
       <div>
         <hr />
@@ -61,13 +107,15 @@ const Home = ({ customIcon, logged, setLogged }) => {
       </div>
       
       
-      <div className="mapContainer">
+      <div className="mapContainer" ref={mapRef}>
         <input type="checkbox" onChange={handleMostrarInfo} />
         <label>Mostrar info</label>
         <MapContainer
-          center={[-27.338, -55.858]}
+          key={eventClick}
+          center={eventClick || [-27.338, -55.858]}
           zoom={12}
           style={{ height: "500px", width: "calc(100% - 1rem)" }}
+          
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

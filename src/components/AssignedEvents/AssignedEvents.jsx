@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Title from "../Title/Title";
 import MapGallery from "../MapGallery/MapGallery";
 
-const AssignedEvents = () => {
+const AssignedEvents = ({handleClick, referencia}) => {
   const [assignedEvents, setAssignedEvents] = useState([]);
   const llamadaInicial = async () => {
     try {
@@ -36,7 +36,7 @@ const AssignedEvents = () => {
   return (
     <>
       <Title text="Eventos a los que estoy asignado" />
-      {assignedEvents ? <MapGallery eventos={assignedEvents} /> : ""}
+      {assignedEvents ? <MapGallery eventos={assignedEvents} handleClick={handleClick} referencia={referencia}/> : ""}
     </>
   );
 };
