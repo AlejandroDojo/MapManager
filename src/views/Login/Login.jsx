@@ -2,7 +2,7 @@ import Logo from "../../assets/LogoBlanco.png";
 import React, { useState } from "react";
 import styles from "./Login.module.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -26,8 +26,7 @@ const Login = (props) => {
         }
       )
       .then(({ data }) => {
-        
-        localStorage.setItem("token", data.token);  
+        localStorage.setItem("token", data.token);
         props.setLogged(true);
         navegar("/");
       })
@@ -63,9 +62,14 @@ const Login = (props) => {
               />
             </div>
           </div>
-          <button className={styles.button} type="submit">
-            Iniciar
-          </button>
+          <div className={styles.buttonContainer}>
+            <button className={styles.button} type="submit">
+              Iniciar Sesión
+            </button>
+          </div>
+          <p className={styles.register}>
+              No tienes una cuenta? <a href="/register">Registrate</a>
+            </p>
         </form>
       </div>
     </div>

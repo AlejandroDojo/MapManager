@@ -81,8 +81,6 @@ img {
     font-family: 'Montserrat', sans-serif;
     color: white;
     border: none;
-    margin-left: 130px;
-    margin-top: 24px;
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
@@ -92,4 +90,19 @@ img {
 
 .button:hover {
     background: linear-gradient(#382c79, #395aa0);
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.login {
+    margin: 0.5rem 1rem;
+    text-align: center;
+}
+
+.login a {
+    color: rgb(95, 39, 248);
+    text-decoration: underline;
 }

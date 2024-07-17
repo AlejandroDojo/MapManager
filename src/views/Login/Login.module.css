@@ -1,6 +1,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
+*{
+    font-family: 'Montserrat', sans-serif;
+}
 .loginContainer {
     display: flex;
     justify-content: center;
@@ -81,15 +83,28 @@ h3 {
     font-family: 'Montserrat', sans-serif;
     color: white;
     border: none;
-    margin-left: 145px;
-    margin-top: 24px;
+    text-align: center;
     padding: 0.75rem 1.5rem;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
     background: linear-gradient(#4f41a2, #395aa0);
 }
-
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .button:hover {
     background: linear-gradient(#382c79, #395aa0);
+}
+
+.register {
+    margin: 2rem 1rem;
+    text-align: center;
+}
+
+.register a {
+    color: rgb(95, 39, 248);
+    text-decoration: underline;
 }

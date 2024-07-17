@@ -42,7 +42,7 @@ const Home = ({ customIcon, logged, setLogged }) => {
   }, []);
 
   if (!logged) {
-    return <Display />;
+    return <Display setLogged={setLogged}/>;
   }
 
   const handleMostrarInfo = () => {
