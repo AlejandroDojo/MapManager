@@ -60,3 +60,9 @@ img {
   
 }
 
+.leaflet-popup-content-wrapper {
+  /* padding: 1px; */
+  padding: 0px;
+  text-align: left;
+  border-radius: 12px;
+}

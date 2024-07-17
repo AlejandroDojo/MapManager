@@ -8,10 +8,11 @@ import { Link } from "react-router-dom";
 import styles from "./MapGallery.module.css";
 import HomePage from '../../views/HomePage/HomePage';
 
-const MapGallery = ({ eventos }) => {
+const MapGallery = ({ eventos, title, subtitle}) => {
+    console.log(title)
     return (
         <div className={styles.container}>
-            <HomePage />
+            <HomePage title={title} subtitle={subtitle}/>
             <div className={styles.event}>
                 <section className={styles.dad}>
                     {eventos.map((evento, index) => {

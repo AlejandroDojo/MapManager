@@ -1,15 +1,24 @@
+import { useNavigate } from "react-router-dom";
 import imagenEjemplo from "../../assets/ejemploimg.jpg";
 import styles from "./MapCard.module.css";
-const MapCard = ({ name, description, imageUrl }) => {
+const MapCard = ({ name, description, imageUrl, _id, start}) => {
+
+  let data = new Date(start).toLocaleString();
+  console.log(data)
+  const navegar = useNavigate()
+  const clickhandler = () => { 
+    navegar(`/evento/${_id}`)
+  }
   return (
-    <div>
+    <div onClick={clickhandler}>
       <div className={styles.container}>
         <img src={imageUrl} alt={name} />
       </div>
-      <div>
-        <h3 className="sinMargen">{name}</h3>
+      <div className={styles.containertext}>
+        <h3 className={styles.title}>{name}</h3>
         <p className="sinMargen">{description}</p>
-        <p className="sinMargen">Empeza: 20:00 hs</p>
+        <hr />
+        <p className="sinMargen">Empeza: {data}</p>
       </div>
     </div>
   );

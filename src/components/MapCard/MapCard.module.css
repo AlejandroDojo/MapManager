@@ -12,4 +12,12 @@
   object-fit: cover;
 }
 
+.containertext {
+  padding: 0px 1rem 1rem 1rem;
+}
 
+.title {
+  padding: 4px 4px 4px 0px;
+  margin: 0;
+  font-weight: 700;
+}

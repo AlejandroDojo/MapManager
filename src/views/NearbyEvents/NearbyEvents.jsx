@@ -34,7 +34,7 @@ const NearbyEvents = ({ customIcon }) => {
             <option value="100">100</option>
           </select>
         </div>
-        <MapGallery eventos={nearbyEvents} />
+        <MapGallery eventos={nearbyEvents} title="LOS MEJORES EVENTOS, CERCA DE TU HOGAR" subtitle="¡No pierdas mas tiempo!"/>
       </div>
     </>
   );

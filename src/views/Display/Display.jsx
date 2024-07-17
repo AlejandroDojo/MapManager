@@ -6,7 +6,7 @@ const Display = () => {
     return (
         <>
             <Header logged={false} />
-            <HomePage />
+            <HomePage title='LOS MEJORES EVENTOS AL ALCANCE DE TU MANO' subtitle='Encuentra tus eventos favoritos aquí'/>
         </>
     )
 }

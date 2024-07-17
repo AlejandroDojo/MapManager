@@ -51,7 +51,7 @@ const Home = ({ customIcon, logged, setLogged }) => {
     <>
       
       <div>
-        <MapGallery eventos={events} />
+        <MapGallery eventos={events} title='LOS MEJORES EVENTOS AL ALCANCE DE TU MANO' subtitle='Encuentra tus eventos favoritos aquí'/>
       </div>
 
       <div className="mapContainer">
@@ -85,14 +85,14 @@ const Home = ({ customIcon, logged, setLogged }) => {
                   position={[evento.location[0], evento.location[1]]}
                   icon={customIcon}
                 >
-                  <Popup className="popup" autoPan={true}>
+                  <Popup className="popup" autoPan={true} >
                     <MapCard
+                      _id={evento._id}
                       name={evento.name}
                       description={evento.description}
                       imageUrl={evento.imageUrl}
+                      start={evento.startDate}
                     />{" "}
-                    <hr />
-                    <Link to={`/evento/${evento._id}`}>Ir al evento</Link>
                   </Popup>
                   <Tooltip
                     direction="top"
