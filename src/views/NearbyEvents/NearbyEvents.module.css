@@ -3,13 +3,13 @@
 }
 
 .selectContainer{
-  position: absolute;
-  right: 0;
+  text-align: center;
+  
 }
 
 .titleSelect {
   font-size: 24px;
-  color: white;
+  color: black;
   font-weight: 700;
 }
 
@@ -26,4 +26,10 @@
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   margin: 2rem;
+}
+
+.titleContainer{
+  margin-top: 50px;
+  height: 300px;
+
 }

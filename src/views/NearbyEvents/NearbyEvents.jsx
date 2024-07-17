@@ -1,5 +1,3 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 
 import MapGallery from "../../components/MapGallery/MapGallery";
 import styles from "./NearbyEvents.module.css";
@@ -7,7 +5,8 @@ import Loader from "../../components/Loader/Loader";
 import useGetNearbyEvents from "../../hooks/useGetNearbyEvents";
 import Title from "../../components/Title/Title";
 
-const NearbyEvents = ({ customIcon }) => {
+
+const NearbyEvents = ({ customIcon,handleClick, referencia }) => {
 
 
   const { loading, nearbyEvents, setMaxDistance,coordActu } = useGetNearbyEvents();
@@ -16,10 +15,7 @@ const NearbyEvents = ({ customIcon }) => {
     setMaxDistance(e.target.value);
   };
 
-  if (coordActu === "") {
-    return <div>No hay acceso a la ubicacion</div>;
-  }
-
+  
   if (!loading) {
     return <Loader />;
   }
@@ -28,6 +24,7 @@ const NearbyEvents = ({ customIcon }) => {
   return (
     <>
       <div className={styles.container}>
+        <Title text="Explora los eventos cercanos a tu ubicación"/>
         <div className={styles.selectContainer}>
           <label className={styles.titleSelect}>Cercania en kilometros a la redonda: </label>
           <select onChange={selectKlm} className={styles.select}>
@@ -37,8 +34,8 @@ const NearbyEvents = ({ customIcon }) => {
             <option value="100">100</option>
           </select>
         </div>
-        <Title text="Explora los eventos cercanos a tu ubicación"/>
-        <MapGallery eventos={nearbyEvents}/>
+        {nearbyEvents.length<1 ?<div className={styles.titleContainer}><Title text="No hay eventos para mostrar"/></div>:""}
+        <MapGallery eventos={nearbyEvents} handleClick={handleClick} referencia={referencia}/>
       </div>
     </>
   );

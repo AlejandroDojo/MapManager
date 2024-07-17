@@ -8,14 +8,15 @@ import { Link } from "react-router-dom";
 import styles from "./MapGallery.module.css";
 import HomePage from '../../views/HomePage/HomePage';
 
-const MapGallery = ({ eventos}) => {
+const MapGallery = ({ eventos, handleClick, referencia}) => {
     return (
         <div className={styles.container}>
             <div className={styles.event}>
                 <section className={styles.dad}>
                     {eventos.map((evento, index) => {
                         return (
-                            <div key={index} className={styles.gallery}>
+                            <div key={index} className={styles.gallery}
+                            >
                                 <div className={styles.front}>
                                     <img
                                         className={styles.imgGallery}
@@ -24,7 +25,8 @@ const MapGallery = ({ eventos}) => {
                                     />
                                     <h3>{evento.name}</h3>
                                 </div>
-                                <div className={styles.back}>
+                                <div className={styles.back}
+                                onClick={()=>handleClick(referencia,evento.location[0],evento.location[1])}>
                                     <p>{evento.description}</p>
                                     <div className={styles.link}>
                                         <Link

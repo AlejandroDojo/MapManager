@@ -9,7 +9,7 @@ const useGetNearbyEvents = () => {
 
   useEffect(() => {
 
-    console.log(maxDistance)
+    
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
