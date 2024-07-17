@@ -9,6 +9,13 @@ import styles from "./MapGallery.module.css";
 import HomePage from '../../views/HomePage/HomePage';
 
 const MapGallery = ({ eventos}) => {
+
+    const EventoDate = ({date}) => {
+        let data = new Date(date).toLocaleString();
+        return (
+            <p>Empieza el {data}</p>
+        )
+    }
     return (
         <div className={styles.container}>
             <div className={styles.event}>
@@ -26,6 +33,7 @@ const MapGallery = ({ eventos}) => {
                                 </div>
                                 <div className={styles.back}>
                                     <p>{evento.description}</p>
+                                    <EventoDate date={evento.startDate}/>
                                     <div className={styles.link}>
                                         <Link
                                             className={styles.linkStyles}

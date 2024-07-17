@@ -12,9 +12,11 @@
   height: 350px;
   margin: 8px;
   perspective: 600px;
+  z-index: 1;
 }
 
 .imgGallery {
+  
   padding: 0px;
   position: absolute;
   width: 100%;
@@ -23,6 +25,7 @@
   backface-visibility: hidden;
   overflow: hidden;
   transition: .5s;
+  
 }
 
 .linkStyles {
@@ -60,6 +63,7 @@
 
 .front {
   transform: rotateY(0deg);
+  
 }
 
 .front img {
@@ -67,6 +71,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  
 }
 
 .front h3 {
@@ -77,6 +82,7 @@
   line-height: 45px;
   color: white;
   background: linear-gradient(#4f41a2, #395aa0);
+  
   opacity: 80%;
   text-align: center;
 }
@@ -120,4 +126,8 @@
 
 .gallery:hover .back {
   transform: rotateY(360deg);
+}
+
+.layer{
+  opacity: 0.4;
 }
