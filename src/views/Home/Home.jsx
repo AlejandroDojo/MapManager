@@ -99,7 +99,6 @@ const Home = ({ customIcon, logged, setLogged }) => {
         {(setAll)?<Title text="Todos los eventos"/>:""}
         {(setAll)?<MapGallery eventos={events} handleClick={scrollToSection} referencia={mapRef}/>:""}
         {(some)?<NearbyEvents handleClick={scrollToSection} referencia={mapRef}/>:""}
-        <AssignedEvents handleClick={scrollToSection} referencia={mapRef}/>
       </div>
       <div>
         <hr />
