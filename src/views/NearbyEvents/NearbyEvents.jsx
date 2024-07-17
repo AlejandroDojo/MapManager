@@ -5,8 +5,11 @@ import MapGallery from "../../components/MapGallery/MapGallery";
 import styles from "./NearbyEvents.module.css";
 import Loader from "../../components/Loader/Loader";
 import useGetNearbyEvents from "../../hooks/useGetNearbyEvents";
+import Title from "../../components/Title/Title";
 
 const NearbyEvents = ({ customIcon }) => {
+
+
   const { loading, nearbyEvents, setMaxDistance,coordActu } = useGetNearbyEvents();
 
   const selectKlm = (e) => {
@@ -34,7 +37,8 @@ const NearbyEvents = ({ customIcon }) => {
             <option value="100">100</option>
           </select>
         </div>
-        <MapGallery eventos={nearbyEvents} title="LOS MEJORES EVENTOS, CERCA DE TU HOGAR" subtitle="¡No pierdas mas tiempo!"/>
+        <Title text="Explora los eventos cercanos a tu ubicación"/>
+        <MapGallery eventos={nearbyEvents}/>
       </div>
     </>
   );

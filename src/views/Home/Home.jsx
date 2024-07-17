@@ -8,6 +8,8 @@ import { DivIcon, point } from "leaflet";
 import MapCard from "../../components/MapCard/MapCard";
 import axios from "axios";
 import Display from "../Display/Display";
+import NearbyEvents from "../NearbyEvents/NearbyEvents";
+import AssignedEvents from "../../components/AssignedEvents/AssignedEvents";
 
 const Home = ({ customIcon, logged, setLogged }) => {
   const [mostrarInfo, setMostrarInfo] = useState(false);
@@ -46,14 +48,19 @@ const Home = ({ customIcon, logged, setLogged }) => {
   if (!loading) {
     return <div>Cargando...</div>;
   }
-
+  //HOME PINTADO
   return (
     <>
-      
       <div>
-        <MapGallery eventos={events} title='LOS MEJORES EVENTOS AL ALCANCE DE TU MANO' subtitle='Encuentra tus eventos favoritos aquí'/>
+        <NearbyEvents />
+        <AssignedEvents />
       </div>
-
+      <div>
+        <hr />
+        <h1>Explora eventos en otras partes del mundo</h1>
+      </div>
+      
+      
       <div className="mapContainer">
         <input type="checkbox" onChange={handleMostrarInfo} />
         <label>Mostrar info</label>

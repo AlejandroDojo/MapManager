@@ -12,10 +12,12 @@ const Header = ({logged}) => {
       ? <>
           <header className={styles.header}>
             <div className={styles.homeNav}>
-              <Link className={styles.linkHedear} to={'/'}>Home</Link>
+            <a  href="/" >
+              <img src={Logo} alt="logoEvent" className={styles.headerLogo} />
+            </a>
             </div>
             <nav className={styles.headerNav}>
-            <Link className={styles.link} to={'/nearbyevents'}>Eventos cercanos</Link>
+            <Link className={styles.link} to={'/'}>Home</Link>
             <Link className={styles.link} to={'/myCalendar'}>Mi Calendario</Link>
             <Link className={styles.link} to={'/myevents'}>Mis eventos</Link>
             <Link className={styles.link} to={'/eventform'}>Crear Evento</Link>

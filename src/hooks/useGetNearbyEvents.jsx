@@ -4,10 +4,13 @@ import { useEffect, useState } from "react";
 const useGetNearbyEvents = () => {
   const [coordActu, setCoordActu] = useState("");
   const [nearbyEvents, setNearbyEvents] = useState([]);
-  const [maxDistance, setMaxDistance] = useState(10);
+  const [maxDistance, setMaxDistance] = useState(30);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
+    console.log(maxDistance)
+
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setCoordActu([position.coords.latitude, position.coords.longitude]);
