@@ -235,10 +235,11 @@ const EventForm = ({ customIcon }) => {
               customIcon={customIcon}
               inicialPosition={null}
               noRedirect={false}
+              
             />
-            {location===null?<p className={styles.locationError}>La ubicacion es necesaria</p>:""}
             
           </div>
+            {location===null?<h3 className={styles.locationError}>La ubicacion es necesaria</h3>:""}
         </div>
         <div className={styles.buttonContainer}>
           <button className={styles.button}>
