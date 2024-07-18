@@ -16,10 +16,12 @@ const Header = ({ logged, setLogged }) => {
   };
 
   useEffect(() => {
+    setActiveLink(localStorage.getItem('index'));
     if (!activeLink) {
       setActiveLink(1)
     }
-  }, [activeLink]);
+    
+  }, []);
 
   const current = (index) => {
     let key = localStorage.getItem("index");

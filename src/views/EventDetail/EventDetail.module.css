@@ -111,7 +111,7 @@ li {
 
 .priceInfo {
   font-size: 20px;
-  color: #bf9900;
+  color: #bf9900 !important; 
   background-color: rgba(3, 2, 49, 0.6);
   padding: 5px 10px;
   border-radius: 5px;

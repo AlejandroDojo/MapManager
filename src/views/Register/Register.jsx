@@ -29,7 +29,7 @@ const Register = (props) => {
           },
         }
       )
-      .then((data) => {
+      .then(({data}) => {
         console.log(data);
         localStorage.setItem("token", data.token);
         props.setLogged(true);

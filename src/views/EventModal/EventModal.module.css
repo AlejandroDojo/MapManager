@@ -24,5 +24,10 @@
     align-items: center;
 }
 .btn{
-    width: 50px;
+    width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    color: white;
+    background-color: #0870cb;
+    border-radius: 8px;
 }
