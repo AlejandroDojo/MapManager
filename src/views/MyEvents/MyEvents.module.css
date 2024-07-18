@@ -25,6 +25,7 @@
 .iconStyle {
   padding: 0px;
   height: 18px;
+  filter: invert(100%);
 }
 
 .imagesContainer{
@@ -46,7 +47,6 @@
 
 .eventsContainer{
   width: 300px;
-  height: 380px;
   border-radius: 3px;
   border: 1px solid #395aa0;
 }
@@ -71,7 +71,7 @@
 }
 
 .buttonsContainer{
-  
+  margin: 18px 18px;
   display: flex;
   justify-content: center;
   align-items: center;
