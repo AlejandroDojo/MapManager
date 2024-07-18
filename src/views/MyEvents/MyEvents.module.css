@@ -25,6 +25,7 @@
 .iconStyle {
   padding: 0px;
   height: 18px;
+  filter: invert(100%);
 }
 
 .imagesContainer{
