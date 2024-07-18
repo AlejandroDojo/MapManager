@@ -4,13 +4,10 @@ import { useEffect, useState } from "react";
 const useGetNearbyEvents = () => {
   const [coordActu, setCoordActu] = useState("");
   const [nearbyEvents, setNearbyEvents] = useState([]);
-  const [maxDistance, setMaxDistance] = useState(30);
-  const [loading, setLoading] = useState(false);
+  const [maxDistance, setMaxDistance] = useState(10);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-
-    
-
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setCoordActu([position.coords.latitude, position.coords.longitude]);
@@ -30,14 +27,15 @@ const useGetNearbyEvents = () => {
           res.data,
           maxDistance
         );
+
         const filteredEvents2 = filteredEvents.filter(
           (event) => Date.parse(event.endDate) > Date.now()
         );
         setNearbyEvents(filteredEvents2);
-        setLoading(true);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
-  }, [ maxDistance]);
+  }, [maxDistance, coordActu]);
 
   function haversineDistance(coords1, coords2) {
     const [lat1, lon1] = coords1;
@@ -69,7 +67,7 @@ const useGetNearbyEvents = () => {
     loading,
     setMaxDistance,
     nearbyEvents,
-    coordActu
+    coordActu,
   };
 };
 
