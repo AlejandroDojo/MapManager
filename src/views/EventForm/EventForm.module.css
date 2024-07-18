@@ -62,6 +62,7 @@ input[type="checkbox"], input[type="file"] {
   height: 300px;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .displayFlex {
@@ -293,6 +294,17 @@ input[type="checkbox"], input[type="file"] {
   .checkboxContainer {
     gap: 10px;
   }
+}
+
+.locationError{
+  color: red;
+  
+  display: inline;
+  visibility: visible;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  
 }
 
 @media (max-width: 480px) {

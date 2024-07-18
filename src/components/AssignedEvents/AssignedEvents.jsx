@@ -5,6 +5,8 @@ import MapGallery from "../MapGallery/MapGallery";
 
 const AssignedEvents = ({handleClick, referencia}) => {
   const [assignedEvents, setAssignedEvents] = useState([]);
+  let token = localStorage.getItem("token");
+
   const llamadaInicial = async () => {
     try {
       const { data } = await axios.get(
@@ -32,6 +34,8 @@ const AssignedEvents = ({handleClick, referencia}) => {
   useEffect(() => {
     llamadaInicial();
   }, []);
+
+  
 
   return (
     <>
