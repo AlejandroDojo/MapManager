@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { format } from "date-fns";
 import styles from "./EventDetail.module.css";
 import axios from "axios";
@@ -12,6 +12,8 @@ const EventDetail = ({ customIcon }) => {
   const { id } = useParams();
   let token = localStorage.getItem("token");
   const [showModal, setShowModal] = useState(false);
+  const [yaEstaAsistiendo, setYaEstaAsistendo] = useState(false);
+  const navegar = useNavigate();
 
   useEffect(() => {
     axios
@@ -21,6 +23,7 @@ const EventDetail = ({ customIcon }) => {
         setLoaded(true);
       })
       .catch((err) => console.log(err));
+      
   }, [id]);
 
   const actualizarCalendario = () => {
@@ -41,12 +44,19 @@ const EventDetail = ({ customIcon }) => {
         )
         .then((data) => {
           console.log(data);
+          setShowModal(true);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err)
+          
+        });
+        setYaEstaAsistendo(true);
     }
-    setShowModal(true);
+    
   };
-
+  const asistio = () => {
+    navegar('/myevents')
+  }
   if (!loaded) {
     return <div>Cargando...</div>;
   }
@@ -96,38 +106,18 @@ const EventDetail = ({ customIcon }) => {
           ) : (
             <p className={styles.priceInfo}>Precio: {evento.price}</p>
           )}
+          {(!yaEstaAsistiendo) ?
           <button className={styles.button} onClick={actualizarCalendario}>
             Asistir al evento
-          </button>
+          </button> :
+          <button className={styles.asistido} onClick={asistio}>
+            Agregado
+          </button>}
         </div>
-
-        <p>Descripcion: {evento.description}</p>
-        {!evento.startDate ? (
-          ""
-        ) : (
-          <p>
-            Fecha de inicio: {format(evento.startDate, "HH:mm | dd MMM yyyy")}
-          </p>
-        )}
-        {!evento.endDate ? (
-          ""
-        ) : (
-          <p>Fecha de fin: {format(evento.endDate, "HH:mm | dd MMM yyyy")}</p>
-        )}
-        {!evento.price ? "" : <p>Precio: {evento.price}</p>}
         {!evento.startDate ? (
           ""
         ) : (
           <>
-            <div className="botonModal">
-              <label
-                htmlFor="btnModal"
-                className="btnACModal"
-                onClick={actualizarCalendario}
-              >
-                Asisitir al evento
-              </label>
-            </div>
             <input
               type="checkbox"
               id="btnModal"

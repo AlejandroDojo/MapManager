@@ -184,13 +184,22 @@
   background-color: #fff;
   position: relative;
   width: 40%;
-  height: 20%;
+  height: 100px;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  bottom: 100px;
 }
 .span{
   color: #4286f4;
+}
+.asistido {
+  padding: 10px 20px;
+  background: linear-gradient(#fa203d, #750000) !important;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

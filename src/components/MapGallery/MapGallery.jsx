@@ -9,6 +9,16 @@ import styles from "./MapGallery.module.css";
 import HomePage from '../../views/HomePage/HomePage';
 
 const MapGallery = ({ eventos, handleClick, referencia}) => {
+
+    const Todate = ({date}) => {
+        let data = new Date(date).toLocaleString();
+        console.log(data);
+        return (
+            <>
+                <p> Horario {data}</p>
+            </>
+        );
+    }
     return (
         <div className={styles.container}>
             <div className={styles.event}>
@@ -28,6 +38,7 @@ const MapGallery = ({ eventos, handleClick, referencia}) => {
                                 <div className={styles.back}
                                 onClick={()=>handleClick(referencia,evento.location[0],evento.location[1])}>
                                     <p>{evento.description}</p>
+                                    <Todate date={evento.startDate}/>
                                     <div className={styles.link}>
                                         <Link
                                             className={styles.linkStyles}

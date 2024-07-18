@@ -25,12 +25,20 @@ a {
   font-family: 'Montserrat', sans-serif;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 18px;
 }
+.headerNav a{
+  position: relative;
+  right: 30px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  font-size: 20px;;
+}
+
 .headerNavRegistrarse {
   font-family: 'Montserrat', sans-serif;
   padding: 8px 18px;
-  background-color: white;
   color: #4f41a2;
   transition: background-color 0.4s, box-shadow 0.4s, color 0.4s;
   cursor: pointer;
@@ -68,4 +76,18 @@ a {
 .button {
   background-color: transparent;
   border: none;
+}
+
+.active {
+  color: rgb(17, 106, 223) !important;
+  background-color: white;
+  width: auto;
+  padding: 38px 0.7rem;
+  text-align: center;
+}
+.logout {
+  width: 100px;
+  height: auto;
+  filter: invert(100%);
+  color: red;
 }

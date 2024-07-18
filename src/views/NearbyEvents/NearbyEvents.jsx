@@ -24,7 +24,6 @@ const NearbyEvents = ({ customIcon,handleClick, referencia }) => {
   return (
     <>
       <div className={styles.container}>
-        <Title text="Explora los eventos cercanos a tu ubicación"/>
         <div className={styles.selectContainer}>
           <label className={styles.titleSelect}>Cercania en kilometros a la redonda: </label>
           <select onChange={selectKlm} className={styles.select}>
