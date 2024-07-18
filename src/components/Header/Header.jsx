@@ -6,8 +6,9 @@ import Logout from '../../assets/logout.png'
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = ({ logged, setLogged}) => {
-  const [activeLink, setActiveLink] = useState(null);
+  
   const [localLogged, setLocalLogged] = useState(logged);
+  const [activeLink, setActiveLink] = useState(0);
   const logout = () => {
     localStorage.removeItem("token");
     setLocalLogged(false);

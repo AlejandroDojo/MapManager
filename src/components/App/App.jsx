@@ -22,6 +22,7 @@ function App() {
   const token = localStorage.getItem("token");
   const [eventos, setEventos] = useState(eventosPrueba);
   const [logged, setLogged] = useState(false);
+  
 
   //cargando eventos
 
@@ -41,7 +42,7 @@ function App() {
       <BrowserRouter>
         {logged ? (
           <div>
-            <Header logged={logged} setLogged={setLogged}/>
+            <Header logged={logged} setLogged={setLogged} />
             <Routes>
               <Route
                 path="/"
