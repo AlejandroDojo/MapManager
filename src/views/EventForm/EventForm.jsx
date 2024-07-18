@@ -42,7 +42,7 @@ const EventForm = ({ customIcon }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     if(location!==null){
       axios
       .post(
@@ -72,6 +72,7 @@ const EventForm = ({ customIcon }) => {
           }
         })
         .then(()=>{
+          localStorage.setItem('index', 1)
           navigate('/')
         })
         

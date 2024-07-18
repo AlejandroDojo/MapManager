@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Header.module.css";
 import Logo from "../../assets/LogoBlanco.png";
 import UserLogo from "../../assets/User icon.png";
-import Logout from '../../assets/logout.png'
+import Logout from "../../assets/logout.png";
 import { Link, useNavigate } from "react-router-dom";
 
-const Header = ({ logged, setLogged}) => {
-  
+const Header = ({ logged, setLogged }) => {
   const [localLogged, setLocalLogged] = useState(logged);
-  const [activeLink, setActiveLink] = useState(0);
+  const [activeLink, setActiveLink] = useState(localStorage.getItem('index'));
   const logout = () => {
     localStorage.removeItem("token");
     setLocalLogged(false);
@@ -16,9 +15,27 @@ const Header = ({ logged, setLogged}) => {
     location.reload();
   };
 
+  useEffect(() => {
+    if (!activeLink) {
+      setActiveLink(1)
+    }
+  }, [activeLink]);
+
   const current = (index) => {
-    setActiveLink(index)
-  }
+    let key = localStorage.getItem("index");
+
+    if (key) {
+      if (!index) {
+        setActiveLink(key);
+      } else {
+        localStorage.setItem("index", index);
+        setActiveLink(index);
+      }
+    } else {
+      localStorage.setItem("index", index);
+      setActiveLink(index);
+    }
+  };
   return (
     <>
       {localLogged ? (
@@ -29,25 +46,59 @@ const Header = ({ logged, setLogged}) => {
                 <img src={Logo} alt="logoEvent" className={styles.headerLogo} />
               </a>
             </div>
-            <nav className={styles.headerNav}>
-              <Link className={ (activeLink === 0) ? styles['active'] : ""} to={"/"} onClick={() => {current(0)}}>
-                Home
-              </Link>
-              <Link className={ (activeLink === 1) ? styles['active'] : ""} to={"/myCalendar"} onClick={() => {current(1)}}>
-                Mi Calendario
-              </Link>
-              <Link className={ (activeLink === 2) ? styles['active'] : ""} to={"/myevents"} onClick={() => {current(2)}}>
-                Mis eventos
-              </Link>
-              <Link className={ (activeLink === 3) ? styles['active'] : ""} to={"/eventform"} onClick={() => {current(3)}}>
-                Crear Evento
-              </Link>
-              <button onClick={logout} className={styles.button}>
-                <Link className={ (activeLink === 4) ? styles['active'] : ""} to={"/"} onClick={() => {current(4)}}>
-                  <img src={Logout} alt="Logout" className={styles.logout}/>
+            {activeLink ? (
+              <nav className={styles.headerNav}>
+                <Link
+                  className={activeLink == 1 ? styles["active"] : ""}
+                  to={"/"}
+                  onClick={() => {
+                    current(1);
+                  }}
+                >
+                  Home
                 </Link>
-              </button>
-            </nav>
+                <Link
+                  className={activeLink == 2 ? styles["active"] : ""}
+                  to={"/myCalendar"}
+                  onClick={() => {
+                    current(2);
+                  }}
+                >
+                  Mi Calendario
+                </Link>
+                <Link
+                  className={activeLink == 3 ? styles["active"] : ""}
+                  to={"/myevents"}
+                  onClick={() => {
+                    current(3);
+                  }}
+                >
+                  Mis eventos
+                </Link>
+                <Link
+                  className={activeLink == 4 ? styles["active"] : ""}
+                  to={"/eventform"}
+                  onClick={() => {
+                    current(4);
+                  }}
+                >
+                  Crear Evento
+                </Link>
+                <button onClick={logout} className={styles.button}>
+                  <Link
+                    className={activeLink == 5 ? styles["active"] : ""}
+                    to={"/"}
+                    onClick={() => {
+                      current(5);
+                    }}
+                  >
+                    <img src={Logout} alt="Logout" className={styles.logout} />
+                  </Link>
+                </button>
+              </nav>
+            ) : (
+              ""
+            )}
           </header>
         </>
       ) : (
