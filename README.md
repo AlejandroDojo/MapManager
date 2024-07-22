@@ -1,8 +1,12 @@
-# React + Vite
+# Team Group Proyect, using all learned in the BootCamp with [Coding Dojo](https://www.codingdojo.la/), see the post [here](https://www.linkedin.com/posts/coding-dojo-latam_fullstack-mern-fundacioncird-activity-7220098329139949568-O2Lc/).
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the Front-End. Start the proyect LocalHost using "npm ruv dev", you need to have the [Back-End](https://github.com/AlejandroDojo/MapManager-Backend)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This Front-End WebApp is using mostly:
+- JavaScript
+- React
+- [LeafFlet](https://react-leaflet.js.org/)
+- Vite
+- Axios
+- React-Router-Dom
+- dayjs
