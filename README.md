@@ -5,7 +5,7 @@ This is the Front-End. Start the proyect LocalHost using "npm ruv dev", you need
 This Front-End WebApp is using mostly:
 - JavaScript
 - React
-- [LeafFlet](https://react-leaflet.js.org/)
+- [LeaFlet](https://react-leaflet.js.org/)
 - Vite
 - Axios
 - React-Router-Dom
