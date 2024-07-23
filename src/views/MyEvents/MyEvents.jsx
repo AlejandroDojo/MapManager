@@ -18,7 +18,7 @@ const MyEvents = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:8080/api/userEvents", {
+      .get("https://mapmanager-backend.onrender.com/api/userEvents", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -29,7 +29,7 @@ const MyEvents = () => {
         Promise.all(
           eventosId.map((id) => {
             return axios
-              .get(`http://localhost:8080/api/getEvent/${id[0]}`)
+              .get(`https://mapmanager-backend.onrender.com/api/getEvent/${id[0]}`)
               .then((evento) => evento.data)
               .catch((err) => {
                 console.log(err);
@@ -53,7 +53,7 @@ const MyEvents = () => {
   const deleteEvent = (eventId) => {
     const token = localStorage.getItem("token");
     axios
-      .delete(`http://localhost:8080/api/delete/${eventId}`, {
+      .delete(`https://mapmanager-backend.onrender.com/api/delete/${eventId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

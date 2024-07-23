@@ -17,7 +17,7 @@ const EventDetail = ({ customIcon }) => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/api/getEvent/${id}`)
+      .get(`https://mapmanager-backend.onrender.com/api/getEvent/${id}`)
       .then((res) => {
         setEvento(res.data);
         setLoaded(true);
@@ -31,7 +31,7 @@ const EventDetail = ({ customIcon }) => {
     {
       axios
         .put(
-          `http://localhost:8080/api/user/agregarEvent/${id}`,
+          `https://mapmanager-backend.onrender.com/api/user/agregarEvent/${id}`,
           {
             token_usuario: token,
           },

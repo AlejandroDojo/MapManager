@@ -24,7 +24,7 @@ const Home = ({ customIcon, logged, setLogged }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getEvents")
+      .get("https://mapmanager-backend.onrender.com/api/getEvents")
       .then((res) => {
         const filteredEvents = res.data.filter(
           (event) => Date.parse(event.endDate) > Date.now()

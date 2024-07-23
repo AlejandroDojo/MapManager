@@ -10,7 +10,7 @@ const AssignedEvents = ({handleClick, referencia}) => {
   const llamadaInicial = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/user/eventosdeusuario/${localStorage.getItem(
+        `https://mapmanager-backend.onrender.com/api/user/eventosdeusuario/${localStorage.getItem(
           "token"
         )}`
       );
@@ -18,7 +18,7 @@ const AssignedEvents = ({handleClick, referencia}) => {
       if (eventosID) {
         const eventosPromises = eventosID.map(async (idDeEvento) => {
           const { data } = await axios.get(
-            `http://localhost:8080/api/getEvent/${idDeEvento}`
+            `https://mapmanager-backend.onrender.com/api/getEvent/${idDeEvento}`
           );
           return data;
         });

@@ -20,7 +20,7 @@ const useGetNearbyEvents = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/getEvents")
+      .get("https://mapmanager-backend.onrender.com/api/getEvents")
       .then((res) => {
         const filteredEvents = getNearbyEvents(
           coordActu,

@@ -46,7 +46,7 @@ const EventForm = ({ customIcon }) => {
     if(location!==null){
       axios
       .post(
-        "http://localhost:8080/api/upload",
+        "https://mapmanager-backend.onrender.com/api/upload",
         {
           name,
           type,
@@ -66,7 +66,7 @@ const EventForm = ({ customIcon }) => {
       .then((data) => {
         const id = data.data;
         const token = localStorage.getItem('token');
-        axios.post(`http://localhost:8080/api/user/create/${id}`,data,{
+        axios.post(`https://mapmanager-backend.onrender.com/api/user/create/${id}`,data,{
           headers: {
             'Authorization': `Bearer ${token}`
           }

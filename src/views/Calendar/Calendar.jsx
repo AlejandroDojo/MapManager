@@ -18,14 +18,14 @@ const FCallendar = () => {
   const traerEventosdelMes = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8080/api/user/eventosdeusuario/${localStorage.getItem('token')}`
+        `https://mapmanager-backend.onrender.com/api/user/eventosdeusuario/${localStorage.getItem('token')}`
       );
       console.log(data);
 
       if (data) {
         const eventosPromises = data.map(async (idDeEvento) => {
           const { data } = await axios.get(
-            `http://localhost:8080/api/getEvent/${idDeEvento}`
+            `https://mapmanager-backend.onrender.com/api/getEvent/${idDeEvento}`
           );
           return {
             start: dayjs(data.startDate).toDate(),

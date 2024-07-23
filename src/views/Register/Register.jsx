@@ -16,7 +16,7 @@ const Register = (props) => {
 
     axios
       .post(
-        "http://localhost:8080/api/register/user",
+        "https://mapmanager-backend.onrender.com/api/register/user",
         {
           firstName,
           lastName,
